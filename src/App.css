@@ -1,0 +1,54 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.game-container {
+  display: grid;
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+  text-align: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+.character {
+  width: 100px;
+  height: 100px;
+  background-color: #00aaff;
+  margin-bottom: 20px;
+}
+
+.enemy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  background-color: #ff0000;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+
+.attack-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #00aa00;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;  
+  outline: none;
+}
