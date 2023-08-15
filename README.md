@@ -1,10 +1,16 @@
-# Getting Started with Create React App
+# Projecto de titulo: Game Clicker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projecto esta siendo realizado por:
+- Jose Miguel Quinteros
+- Sebastian Medina Merino
+- Antonia Acosta Fica
 
-## Available Scripts
 
-In the project directory, you can run:
+## INSTRUCTIVO
+
+Este proejecto esta basado dentro de un ambito de estudio sobre la ansiedad y su relacion con el sentimiento de control que encuentran estas personas dentro de un juego clicker.
+
+A continuacion la instalacion
 
 ### `npm start`
 
