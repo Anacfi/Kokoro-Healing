@@ -7,6 +7,7 @@ const Layout = ({ children }) => {
 
   const [enemyHealth, setEnemyHealth] = useState(0); // Vida inicial del Enemigo
   const [scoreData, setScoreData] = useState(0); // Puntaje actual
+  const [playerDamage, setPlayerDamage] = useState(1); // Agregamos el estado para el daño del personaje
 
   useEffect(() => {
     // Cargar valores iniciales desde el archivo JSON
@@ -17,7 +18,7 @@ const Layout = ({ children }) => {
 
   const attack = () => {
     // Restar 1 a la vida del enemigo
-    const newHealth = enemyHealth - 1;
+    const newHealth = enemyHealth - playerDamage;
 
     // Actualizar el estado de enemyHealth
     setEnemyHealth(newHealth);
@@ -27,6 +28,9 @@ const Layout = ({ children }) => {
       score();
       spawnNewEnemy();
     }
+  };
+  const increasePlayerDamage = () => {
+    setPlayerDamage(playerDamage + 1); // Aumenta el daño del personaje
   };
 
   const spawnNewEnemy = () => {
@@ -64,10 +68,15 @@ const Layout = ({ children }) => {
           <div className="character"></div>
           <div className="enemy"><span id="enemyHealth">{enemyHealth}</span></div>
           <button className="attack-button" onClick={attack} >Attack</button>
+          <button className="increase-damage-button" onClick={increasePlayerDamage}>Increase Damage</button>
         </div>
+        
         <div className="scoreboard">
-          <span id="score">{scoreData}</span>
-        </div>  
+          <span id="score"> score: {scoreData}</span>
+        </div>
+        <div className='scoredamage'>
+          <span id='damage'>Daño personaje: {playerDamage}</span> 
+        </div>
         {children}
       </main>
       <footer>
