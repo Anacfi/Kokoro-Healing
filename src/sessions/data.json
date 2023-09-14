@@ -2,7 +2,7 @@
     "ID" : 12023,
     "User" : "Antonia",
     "Coins" : 50,
-    "Exp" : 100,
+    "Exp" : 1,
     "Character" : {
         "Nombre" : "Hako",
         "Fuerza" : 10
@@ -12,6 +12,9 @@
         "Vida" : 10,
         "Defensa" : 5,
         "exp" : 10
+    },
+    "Companion": {
+        "Nombre" : "Michi",
+        "Id" : 1
     }
-
 }

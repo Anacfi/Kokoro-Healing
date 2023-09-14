@@ -1,12 +1,13 @@
 {
     "Consejos": {
-        "c01" : "Recuerda tomar awita <3",
-        "c02" : "Recuerda alimentarte bien <3" 
+        "c01": "Recuerda tomar awita <3",
+        "c02": "Recuerda alimentarte bien <3"
     },
-
-    "Mensajes" : {
-        "m01" : "No te angusties, todo va a estar bien, lo prometo",
-        "m02" : "No sobrepienses, nada de lo que piensas ha pasado, no te preocupes"
+    "Mensajes": {
+        "m01": "No te angusties, todo va a estar bien, lo prometo",
+        "m02": "No sobrepienses, nada de lo que piensas ha pasado, no te preocupes",
+        "m03": "Con calma, nada puede hacerte daño",
+        "m04": "Piensa en un gatito, como yo. A VER ESA SONRISA",
+        "m05": "Tranqui, solo va a tomar 15 min de descanso"
     }
-
 }

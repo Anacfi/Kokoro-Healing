@@ -3,11 +3,13 @@ import UserData from '../sessions/data.json'; // JSON del Character
 import Character from '../models/character';
 import Enemy from '../models/enemy';
 import React, { useState, useEffect } from 'react';
-
+import Message from './message';
+import SessionTime from './sessionTime';
+import RANDOMCOLOR from './randomColor';
+import RecruitButton from './recruitButton.js';
 
 
 const Layout = ({ children }) => {
-
 
   const [characterInstance, setCharacterInstance] = useState(
     new Character(  
@@ -23,100 +25,120 @@ const Layout = ({ children }) => {
       UserData.Enemy.Defensa,
       UserData.Enemy.exp
     )
-  ); // Vida inicial del Enemigo
-
-  const [coinsData, setCoinsData] = useState(1); // Puntaje actual
+  ); // Crear una instancia de la clase Enemigo
+  
+  const [expData, setExpData] = useState(UserData.Exp);       // Experiencia
+  const [tempCount, setTempCount] = useState(2);       // Experiencia
   
 
-
-  useEffect(() => {
-
-  }, []); // El arreglo vacío [] asegura que este efecto se ejecute solo una vez al montar el componente
-
-
+  // ------------------------------------------------------------------------------ //
 
   //FUNCION PARA ATACARz
   const attack = () => {
+    
 
-      setEnemyInstance(new Enemy(
-          enemyInstance.nombre,
-          characterInstance.attack(enemyInstance),
-          enemyInstance.defensa,
-          enemyInstance.exp
-        )
+    const newVida = characterInstance.attack(enemyInstance, characterInstance);
+
+    setEnemyInstance(prevEnemyInstance => {
+
+      const updatedEnemyInstance = new Enemy(
+
+        prevEnemyInstance.nombre,
+        newVida,
+        prevEnemyInstance.defensa,
+        prevEnemyInstance.exp
       );
-      
-      
 
-    console.log(enemyInstance);
-    // Actualizar el estado de enemyInstance con la nueva instancia
+      return updatedEnemyInstance;
+    });
   
-
-
     // Comprobar si el enemigo ha sido derrotado
-    if (enemyInstance.vida <= 0 || isNaN(enemyInstance.vida)) {
-      console.log("Estoy muerto")
-      score();
-      spawnNewEnemy();
+    if (newVida <= 0 || isNaN(newVida)) {
+        score();
+        spawnNewEnemy();
     }
   };
 
-
-  
-  // const increasePlayerDamage = () => {
-  //   setPlayerDamage(playerDamage + 1); // Aumenta el daño del personaje
-  // };
-
+  // ------------------------------------------------------------------------------ //
 
   // FUNCION PARA EL SPAWNENEMY
   const spawnNewEnemy = () => {
+
     // Reiniciar la vida del enemigo y actualizar el estado
-    setEnemyInstance.vida = 10 * coinsData;
-    console.log(enemyInstance.vida);
+    setEnemyInstance(prevEnemyInstance => {
+
+      const updatedEnemyInstance = new Enemy(
+
+        prevEnemyInstance.nombre,
+        10 * tempCount,  // Vida
+        prevEnemyInstance.defensa,
+        prevEnemyInstance.exp
+      );
+      
+      return updatedEnemyInstance;
+
+    });
+
 
       // Cambiar el color de fondo aleatoriamente
     let enemy = document.querySelector(".enemy");
-    enemy.style.backgroundColor = getRandomColor();
+    enemy.style.backgroundColor = RANDOMCOLOR();
   };  
+
+  // ------------------------------------------------------------------------------ //
+
+  
+  // HELPER DE DAMAGE X SEC
+  const onRecruit = (newExp) => {
+    const newAttack = characterInstance.incrementAttack(characterInstance);
+
+    setExpData(newExp);
+    console.log("newexp:"+newExp);
+
+    const updatedCharacterInstance = new Character(
+        UserData.Character.Nombre, 
+        newAttack
+      );
+
+    setCharacterInstance(updatedCharacterInstance);
+
+  };
+
+  // ------------------------------------------------------------------------------ //
 
 
   // FUNCION PARA EL PUNTAJE
   const score = () => {
     // Sumamos el puntaje
-    setCoinsData(coinsData + 1);
+    setExpData(expData+enemyInstance.exp);
+    setTempCount(tempCount + 1);
   }
-
-
-
-  // FUNCION PARA RANDOMCOLOR
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
 
   return (
     <div className='container'>
       <header>
         <h1>Clicker Game</h1>
       </header>
+      <Message>
+
+      </Message>
         <p>Bienvenido a nuestro juego clicker.</p>
         <div className="game-container"> {/* Contenedor TABLERO */}
-          <div className="enemy"><span id="enemyHealth">{enemyInstance.vida}</span></div>
-          <div className="character"></div>
-          <button className="attack-button" onClick={attack} >Attack</button>
-          {/*<button className="increase-damage-button" onClick={increasePlayerDamage}>Increase Damage</button>*/}
+          
+          <div className="enemy"><button onClick={attack} ><span id="enemyHealth">{enemyInstance.vida}</span></button></div>
+
         </div>
+
+        <div id="reloj"></div>
         
         <div className="scoreboard">
-          <span id="score"> score: {coinsData}</span>
+          <span id="score"> Experiencia emocional : {expData}</span>
         </div>
-        {/*<div className='scoredamage'>
-          <span id='damage'>Daño personaje: {playerDamage}</span> 
-        </div>*/}
+
+        <RecruitButton onRecruit={onRecruit} characterexp={expData}/>
+
+        <SessionTime>
+        </SessionTime>
         {children}
 
       <footer>

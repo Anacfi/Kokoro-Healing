@@ -13,17 +13,21 @@ class Character  {
 
   }
 
-  attack(enemigo) {
-    console.log("Fuerza : " + this.fuerza);
-    console.log("Vida Enemigo : " + enemigo.vida);
-    console.log("Defensa Enemigo : " + enemigo.defensa);
+  attack(enemigo, character) {
 
-    let setEnemigo = (enemigo.vida + enemigo.defensa) - this.fuerza;
-    console.log("vida del enemigo despues del ataque: " + setEnemigo);
+    let setEnemigo = (enemigo.vida) - (character.fuerza);
 
     return setEnemigo;
     
-  };
-}
+  }; 
+  
+
+  incrementAttack(character){
+
+    let setCharacter = (character.fuerza + 1);
+
+    return setCharacter;
+  }
+} 
 
 export default Character;

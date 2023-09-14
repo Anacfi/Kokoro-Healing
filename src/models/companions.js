@@ -1,22 +1,19 @@
-import json_data from '../temp/messages.json'
+import data from '../temp/messages.json';
 
 class Companion {
     /**
      * 
      * @param {string} nombre Nombre del acompañante
-     * @param {string} mensaje Mensaje call del acompañante
+     * @param {string} id Id del acompañante
      */
-    constructor(nombre, mensaje){
+    constructor(nombre, id){
         this.nombre = nombre;
-        this.mensaje = mensaje;
+        this.id = id;
     }
 
     mensajito() {
-        // Cargar el JSON
-        const data = JSON.parse(json_data);
-
-        // Obtener los mensajes
-        const mensajes = data["Mensajes"];
+        // Acceder a los mensajes
+        const mensajes = data.Mensajes;
 
         // Obtener una clave aleatoria
         const clavesMensajes = Object.keys(mensajes);
@@ -27,5 +24,8 @@ class Companion {
 
         // Retornar el mensaje aleatorio
         return mensaje_aleatorio;
+        
     }
 }
+
+export default Companion;

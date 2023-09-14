@@ -14,7 +14,15 @@ class Enemy {
     this.exp = exp;
   }
 
+  incrementExp(enemyInstance){
+  
+    let setEnemy = (enemyInstance.exp + 1);
+
+    return setEnemy;
+  }
   
 }
+
+
 
 export default Enemy;
