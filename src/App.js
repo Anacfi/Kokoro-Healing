@@ -1,19 +1,23 @@
 // import './App.css';
 // import Layout from './components/layout';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Firstscreen from './components/firstscreen';
+import Layout from './components/layout';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Firstscreen></Firstscreen>
-        
-
-        {/* <Layout>
-
-        </Layout> */}
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Routes>
+            <Route path="/" element={<Firstscreen />} />
+            <Route path="/game" element={<Layout />} />
+            {/* Agrega tus rutas aquí */}
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
