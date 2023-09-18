@@ -16,7 +16,7 @@ class Enemy {
 
   incrementExp(enemyInstance){
   
-    let setEnemy = (enemyInstance.exp + 1);
+    let setEnemy = (enemyInstance.exp + 2);
 
     return setEnemy;
   }

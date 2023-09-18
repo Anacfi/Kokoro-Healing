@@ -2,11 +2,12 @@
 import UserData from '../sessions/data.json'; // JSON del Character
 import Character from '../models/character';
 import Enemy from '../models/enemy';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Message from './message';
 import SessionTime from './sessionTime';
 import RANDOMCOLOR from './randomColor';
-import RecruitButton from './recruitButton.js';
+import RecruitComponent from './RecruitComponent.js';
+import SaveComponent from './saveSessionComponent';
 
 
 const Layout = ({ children }) => {
@@ -88,12 +89,11 @@ const Layout = ({ children }) => {
   // ------------------------------------------------------------------------------ //
 
   
-  // HELPER DE DAMAGE X SEC
-  const onRecruit = (newExp) => {
+  // HELPER DE DAMAGE
+  const onRecruitDamage = (newExp) => {
     const newAttack = characterInstance.incrementAttack(characterInstance);
 
     setExpData(newExp);
-    console.log("newexp:"+newExp);
 
     const updatedCharacterInstance = new Character(
         UserData.Character.Nombre, 
@@ -103,6 +103,41 @@ const Layout = ({ children }) => {
     setCharacterInstance(updatedCharacterInstance);
 
   };
+
+    // HELPER DE DAMAGE EXP
+    const onRecruitExp = (newExp) => {
+      const neweEnemyExp = enemyInstance.incrementExp(enemyInstance);
+  
+      setExpData(newExp);
+      console.log("newexp:"+newExp);
+  
+      const updatedEnemyInstance= new Enemy(
+          UserData.Enemy.Nombre,
+          enemyInstance.vida,
+          enemyInstance.defensa,
+          neweEnemyExp
+        );
+  
+      setEnemyInstance(updatedEnemyInstance);
+  
+    };
+
+    // HELPER DE DAMAGE SEC
+    const onRecruitDamageSec = (newExp) => {
+      const newAttack = characterInstance.incrementAttack(characterInstance);
+  
+      setExpData(newExp);
+      console.log("newexp:"+newExp);
+  
+      const updatedCharacterInstance = new Character(
+          UserData.Character.Nombre, 
+          newAttack
+        );
+  
+      setCharacterInstance(updatedCharacterInstance);
+  
+    };
+
 
   // ------------------------------------------------------------------------------ //
 
@@ -119,6 +154,9 @@ const Layout = ({ children }) => {
       <header>
         <h1>Clicker Game</h1>
       </header>
+
+      <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
+
       <Message>
 
       </Message>
@@ -135,7 +173,7 @@ const Layout = ({ children }) => {
           <span id="score"> Experiencia emocional : {expData}</span>
         </div>
 
-        <RecruitButton onRecruit={onRecruit} characterexp={expData}/>
+        <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
 
         <SessionTime>
         </SessionTime>

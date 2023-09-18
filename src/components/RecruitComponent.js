@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 
-const RecruitButton = ({ onRecruit, characterexp}) => {
+const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, expData}) => {
   const [recruits, setRecruits] = useState(0);
   const [cost, setCost] = useState(2);
   const [mostrarMensajeError, setMostrarMensajeError] = useState(false);
 
   const handleRecruitDamageClick = () => {
-    if (characterexp < cost) {
+
+    if (expData< cost) {
       setMostrarMensajeError(true);
 
       setTimeout(() => {
@@ -23,14 +24,14 @@ const RecruitButton = ({ onRecruit, characterexp}) => {
       setRecruits(recruits + 1);
 
       // Llama a la función de reclutamiento pasada como prop
-      if (onRecruit) {
-        onRecruit(newExp);
+      if (onRecruitDamage) {
+        onRecruitDamage(newExp);
       };
     };
   };
 
   const handleRecruitExpClick = () => {
-    if (characterexp < cost) {
+    if (expData < cost) {
       setMostrarMensajeError(true);
 
       setTimeout(() => {
@@ -47,14 +48,14 @@ const RecruitButton = ({ onRecruit, characterexp}) => {
       setRecruits(recruits + 1);
 
       // Llama a la función de reclutamiento pasada como prop
-      if (onRecruit) {
-        onRecruit(newExp);
+      if (onRecruitExp) {
+        onRecruitExp(newExp);
       };
     };
   };
 
   const handleRecruitDamageSecClick = () => {
-    if (characterexp < cost) {
+    if (expData < cost) {
       setMostrarMensajeError(true);
 
       setTimeout(() => {
@@ -71,15 +72,15 @@ const RecruitButton = ({ onRecruit, characterexp}) => {
       setRecruits(recruits + 1);
 
       // Llama a la función de reclutamiento pasada como prop
-      if (onRecruit) {
-        onRecruit(newExp);
+      if (onRecruitDamageSec) {
+        onRecruitDamageSec(newExp);
       };
     };
 
   };
 
   const expCost = () => {
-    const newExp = (characterexp - cost)
+    const newExp = (expData - cost)
 
     console.log(newExp);
     return newExp;
@@ -97,4 +98,4 @@ const RecruitButton = ({ onRecruit, characterexp}) => {
   );
 };
 
-export default RecruitButton;
+export default RecruitComponent;
