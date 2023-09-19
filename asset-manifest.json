@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/react-gh-pages/static/css/main.62da390b.css",
+    "main.js": "/react-gh-pages/static/js/main.f842e015.js",
+    "static/js/787.8b3fa7a3.chunk.js": "/react-gh-pages/static/js/787.8b3fa7a3.chunk.js",
+    "static/media/mountain-landscape-3840x2160-4k-wallpaper-v0-ez1k6v2m7n8a1.jpg": "/react-gh-pages/static/media/mountain-landscape-3840x2160-4k-wallpaper-v0-ez1k6v2m7n8a1.5ce3d8370c352e4aa4ba.jpg",
+    "static/media/continuar.png": "/react-gh-pages/static/media/continuar.65d59a41a5bb5d1340fb.png",
+    "index.html": "/react-gh-pages/index.html",
+    "main.62da390b.css.map": "/react-gh-pages/static/css/main.62da390b.css.map",
+    "main.f842e015.js.map": "/react-gh-pages/static/js/main.f842e015.js.map",
+    "787.8b3fa7a3.chunk.js.map": "/react-gh-pages/static/js/787.8b3fa7a3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.62da390b.css",
+    "static/js/main.f842e015.js"
+  ]
+}
