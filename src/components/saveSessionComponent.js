@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import DataSession from '../sessions/data.json'; // JSON del Character
+import '../styles/stylesPP.css';
 
 const SaveComponent = ({ UserData, EnemyData, CharacterData, expData }) => {
   const [recruits, setRecruits] = useState(0);
@@ -40,9 +41,8 @@ const SaveComponent = ({ UserData, EnemyData, CharacterData, expData }) => {
 
 
   return (
-    <div>
-      <button onClick={handleSaveSession}>Guardar Partida</button>
-
+    <div className='guardarbuttondiv'>
+      <button className="guardarbutton" onClick={handleSaveSession}></button>
       {mostrarMensaje && <p id='saveMessage'>Sesion guardada</p>}
 
     </div>

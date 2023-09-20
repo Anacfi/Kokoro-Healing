@@ -8,6 +8,7 @@ import SessionTime from './sessionTime';
 import RANDOMCOLOR from './randomColor';
 import RecruitComponent from './RecruitComponent.js';
 import SaveComponent from './saveSessionComponent';
+import '../styles/stylesPP.css'
 
 
 const Layout = ({ children }) => {
@@ -151,38 +152,43 @@ const Layout = ({ children }) => {
 
   return (
     <div className='container'>
-      <header>
-        <h1>Clicker Game</h1>
-      </header>
-
-      <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
-
-      <Message>
-
-      </Message>
-        <p>Bienvenido a nuestro juego clicker.</p>
-        <div className="game-container"> {/* Contenedor TABLERO */}
-          
-          <div className="enemy"><button onClick={attack} ><span id="enemyHealth">{enemyInstance.vida}</span></button></div>
-
-        </div>
-
-        <div id="reloj"></div>
+      <div className='estadisticas'>
         
-        <div className="scoreboard">
-          <span id="score"> Experiencia emocional : {expData}</span>
+        <div >
+          <header>
+            <h1>Kokoro Healing</h1>
+            <div id="reloj"></div>
+          </header>
+            <Message />
+            <p>Bienvenido a nuestro juego clicker.</p>
+            
+            <div id="reloj"></div>
+            
+            <div className="scoreboard">
+              <span id="score"> Experiencia emocional : {expData}</span>
+              {children}
+            </div>
+
+            <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
+
+            <SessionTime />  {/* tiempo */}
+          
+            {children}
         </div>
 
-        <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
-
-        <SessionTime>
-        </SessionTime>
-        {children}
-
-      <footer>
-        <p>© 2023 Clicker Game project</p>
-      </footer>
+      </div>
+      <div className="game-container">
+         {/* Contenedor TABLERO */}
+        <div className="enemy"><button onClick={attack} ><span id="enemyHealth" className='spanenemy'>{enemyInstance.vida}</span></button>
+        <div></div>
+        
+        </div>
+        <div className='guardarjson'>
+        <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
+        </div>
+      </div> 
     </div>
+    
 
   );
 };
