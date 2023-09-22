@@ -27,7 +27,16 @@ class Character  {
     let setCharacter = (character.fuerza + 1);
 
     return setCharacter;
-  }
+  };
+
+  attackDamageSec(enemigo, damagesec) {
+
+    let setEnemigo = (enemigo.vida) - (damagesec);
+    console.log("vida enemigo: "+enemigo.vida);
+    console.log("Daño por segundo: "+damagesec);
+    return setEnemigo;
+    
+  }; 
 } 
 
 export default Character;

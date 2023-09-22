@@ -2,7 +2,7 @@
 import UserData from '../sessions/data.json'; // JSON del Character
 import Character from '../models/character';
 import Enemy from '../models/enemy';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Message from './message';
 import SessionTime from './sessionTime';
 import RANDOMCOLOR from './randomColor';
@@ -41,6 +41,7 @@ const Layout = ({ children }) => {
   
   const [expData, setExpData] = useState(UserData.Exp);       // Experiencia
   const [tempCount, setTempCount] = useState(2);       // Experiencia
+  const [damageTemp, setDamageTemp] = useState(0);       // Experiencia
   
 
   // ------------------------------------------------------------------------------ //
@@ -48,8 +49,7 @@ const Layout = ({ children }) => {
   //FUNCION PARA ATACARz
   const attack = () => {
     
-
-    const newVida = characterInstance.attack(enemyInstance, characterInstance);
+    const newVida = enemyInstance.vida - characterInstance.fuerza;
 
     setEnemyInstance(prevEnemyInstance => {
 
@@ -69,6 +69,48 @@ const Layout = ({ children }) => {
         score();
         spawnNewEnemy();
     }
+  };
+
+  // ------------------------------------------------------------------------------ //
+  
+  let intervalId = null;
+
+  //FUNCION PARA ATACAR POR SEGUNDO
+  const attackDamageSec = (damage) => {
+    console.log("aaa");
+    console.log("aa: "+intervalId);
+
+  // Detener el temporizador anterior si existe
+    if (intervalId.isnumber) {  
+      console.log("true");
+      clearInterval(intervalId);
+    }
+
+    intervalId = setInterval(() => {
+      console.log("Intervalo antes: "+ intervalId);
+      console.log(damage);
+
+      setEnemyInstance(prevEnemyInstance => {
+        const newVida = prevEnemyInstance.vida - damage;
+        const updatedEnemyInstance = new Enemy(
+          prevEnemyInstance.nombre,
+          newVida,
+          prevEnemyInstance.defensa,
+          prevEnemyInstance.exp
+        );
+        
+        if (newVida <= 0 || isNaN(newVida)) {
+          score();
+          spawnNewEnemy();
+        }
+        
+        return updatedEnemyInstance;
+      });
+
+      console.log("intervalo: " +intervalId);
+
+    }, 1000); // 1000 milisegundos = 1 segundo
+
   };
 
   // ------------------------------------------------------------------------------ //
@@ -136,24 +178,15 @@ const Layout = ({ children }) => {
     };
 
     // HELPER DE DAMAGE SEC
-    const onRecruitDamageSec = (newExp) => {
-      const newAttack = characterInstance.incrementAttack(characterInstance);
-  
+      const onRecruitDamageSec = (newExp, damagesec) => {
+      const damagesecVal = damagesec
+      // Actualiza el estado de expData
       setExpData(newExp);
-      console.log("newexp:"+newExp);
-  
-      const updatedCharacterInstance = new Character(
-          UserData.Character.Nombre, 
-          newAttack
-        );
-  
-      setCharacterInstance(updatedCharacterInstance);
-  
+      // Llamada a la function
+      attackDamageSec(damagesecVal);
     };
 
-
   // ------------------------------------------------------------------------------ //
-
 
   // FUNCION PARA EL PUNTAJE
   const score = () => {

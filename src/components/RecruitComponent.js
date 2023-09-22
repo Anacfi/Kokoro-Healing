@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, expData}) => {
   const [recruits, setRecruits] = useState(0);
+  const [countrecruitDamageSec, setCountRecruitDamageSec] = useState(1);
   const [cost, setCost] = useState(2);
   const [mostrarMensajeError, setMostrarMensajeError] = useState(false);
 
@@ -64,6 +65,8 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
 
 
     } else {
+      setCountRecruitDamageSec(countrecruitDamageSec + 1);
+
       const newExp = expCost(); 
       // Incrementa el costo del recluta
       setCost(cost + 2);
@@ -73,7 +76,7 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
 
       // Llama a la función de reclutamiento pasada como prop
       if (onRecruitDamageSec) {
-        onRecruitDamageSec(newExp);
+        onRecruitDamageSec(newExp, countrecruitDamageSec);
       };
     };
 
@@ -81,8 +84,6 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
 
   const expCost = () => {
     const newExp = (expData - cost)
-
-    console.log(newExp);
     return newExp;
   }
 

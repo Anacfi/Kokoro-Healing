@@ -7,7 +7,7 @@ const SaveComponent = ({ UserData, EnemyData, CharacterData, expData }) => {
   const [cost, setCost] = useState(2);
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
 
-  const handleSaveSession = () => {
+  const handleSaveSession = () => { 
 
     // Clonar el objeto DataSession
     const newDataSession = { ...DataSession };
