@@ -13,6 +13,16 @@ import '../styles/stylesPP.css'
 
 const Layout = ({ children }) => {
 
+  const enemyImages =[
+    require('../imagenes/enemy/BUHO.png'),
+    require('../imagenes/enemy/HONGO.png'),
+    require('../imagenes/enemy/MURCIELAGO.png'),
+    require('../imagenes/enemy/PÉSCADO.png'),
+    require('../imagenes/enemy/SOMBRERIN.png'),
+  ];
+
+  const [enemyImage, setEnemyImage] = useState(null);
+
   const [characterInstance, setCharacterInstance] = useState(
     new Character(  
       UserData.Character.Nombre, 
@@ -65,6 +75,7 @@ const Layout = ({ children }) => {
 
   // FUNCION PARA EL SPAWNENEMY
   const spawnNewEnemy = () => {
+    const randomImages = enemyImages[Math.floor(Math.random() * enemyImages.length)];
 
     // Reiniciar la vida del enemigo y actualizar el estado
     setEnemyInstance(prevEnemyInstance => {
@@ -76,15 +87,16 @@ const Layout = ({ children }) => {
         prevEnemyInstance.defensa,
         prevEnemyInstance.exp
       );
+     
       
       return updatedEnemyInstance;
 
     });
 
-
-      // Cambiar el color de fondo aleatoriamente
-    let enemy = document.querySelector(".enemy");
-    enemy.style.backgroundColor = RANDOMCOLOR();
+    setEnemyImage(randomImages)
+    //   // Cambiar el color de fondo aleatoriamente
+    // let enemy = document.querySelector(".enemy");
+    // enemy.style.backgroundColor = RANDOMCOLOR();
   };  
 
   // ------------------------------------------------------------------------------ //
@@ -163,11 +175,13 @@ const Layout = ({ children }) => {
             <p>Bienvenido a nuestro juego clicker.</p>
             
             <div id="reloj"></div>
+            <span id="enemyHealth" className='spanenemy'> vida del enemigo: {enemyInstance.vida}</span>
             
             <div className="scoreboard">
               <span id="score"> Experiencia emocional : {expData}</span>
               {children}
             </div>
+            
 
             <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
 
@@ -179,10 +193,15 @@ const Layout = ({ children }) => {
       </div>
       <div className="game-container">
          {/* Contenedor TABLERO */}
-        <div className="enemy"><button onClick={attack} ><span id="enemyHealth" className='spanenemy'>{enemyInstance.vida}</span></button>
-        <div></div>
-        
+        <div className='enemycontainer'>
+          {/* <div className="vidaenemigo">
+            <span id="enemyHealth" className='spanenemy'> vida: {enemyInstance.vida}</span>
+          </div> */}
+          <div>
+            <button className='enemychange' onClick={attack} ><img className='imageenemy' src={enemyImage} alt="Enemigo" /></button>
+          </div>
         </div>
+
         <div className='guardarjson'>
         <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
         </div>

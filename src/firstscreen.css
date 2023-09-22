@@ -18,7 +18,7 @@ button{
     margin: 10px;
     padding: 10px 20px;
     font-size: 18px;
-    background-color: black;/* PONER TRANSPARENTE EN VES DE COLOR , SE PONE EN BACKGROUND COLOR transparent   */
+    background-color: transparent;/* PONER TRANSPARENTE EN VES DE COLOR , SE PONE EN BACKGROUND COLOR transparent   */
     border: none;
     border-radius: 5px;
     cursor: pointer;
