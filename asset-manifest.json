@@ -1,17 +1,22 @@
 {
   "files": {
-    "main.css": "./static/css/main.7fd6ce58.css",
-    "main.js": "./static/js/main.22759f28.js",
+    "main.css": "./static/css/main.51923568.css",
+    "main.js": "./static/js/main.3da1a108.js",
     "static/js/787.8b3fa7a3.chunk.js": "./static/js/787.8b3fa7a3.chunk.js",
+    "static/media/mapleforest02.gif": "./static/media/mapleforest02.86684c2a146c0a94ba8a.gif",
     "static/media/mountain-landscape-3840x2160-4k-wallpaper-v0-ez1k6v2m7n8a1.jpg": "./static/media/mountain-landscape-3840x2160-4k-wallpaper-v0-ez1k6v2m7n8a1.5ce3d8370c352e4aa4ba.jpg",
+    "static/media/guardar partida.png": "./static/media/guardar partida.bc66f5b809525447c178.png",
+    "static/media/HONGO.png": "./static/media/HONGO.fde017510e071022b82c.png",
+    "static/media/SOMBRERIN.png": "./static/media/SOMBRERIN.e1821fdd2904c2c8cc7c.png",
     "static/media/continuar.png": "./static/media/continuar.65d59a41a5bb5d1340fb.png",
+    "static/media/BUHO.png": "./static/media/BUHO.a14c451596c89b5634eb.png",
     "index.html": "./index.html",
-    "main.7fd6ce58.css.map": "./static/css/main.7fd6ce58.css.map",
-    "main.22759f28.js.map": "./static/js/main.22759f28.js.map",
+    "main.51923568.css.map": "./static/css/main.51923568.css.map",
+    "main.3da1a108.js.map": "./static/js/main.3da1a108.js.map",
     "787.8b3fa7a3.chunk.js.map": "./static/js/787.8b3fa7a3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fd6ce58.css",
-    "static/js/main.22759f28.js"
+    "static/css/main.51923568.css",
+    "static/js/main.3da1a108.js"
   ]
 }
