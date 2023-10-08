@@ -52,4 +52,8 @@ button{
     color: rgb(131, 245, 245);
     -webkit-text-stroke: 2px black;
     text-align: center;
+}   
+.titulo img {
+    width: 800px;
+    height: auto; 
 }

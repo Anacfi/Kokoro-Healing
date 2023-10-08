@@ -5,20 +5,19 @@ import Enemy from '../models/enemy';
 import React, { useEffect, useState } from 'react';
 import Message from './message';
 import SessionTime from './sessionTime';
-import RANDOMCOLOR from './randomColor';
 import RecruitComponent from './RecruitComponent.js';
 import SaveComponent from './saveSessionComponent';
 import '../styles/stylesPP.css'
-
+import logo from '../imagenes/logo.png'; 
 
 const Layout = ({ children }) => {
 
   const enemyImages =[
-    require('../imagenes/enemy/BUHO.png'),
-    require('../imagenes/enemy/HONGO.png'),
-    require('../imagenes/enemy/MURCIELAGO.png'),
-    require('../imagenes/enemy/PÉSCADO.png'),
-    require('../imagenes/enemy/SOMBRERIN.png'),
+    require('../imagenes/enemy1/BUHO.png'),
+    require('../imagenes/enemy1/HONGO.png'),
+    require('../imagenes/enemy1/MURCIELAGO.png'),
+    require('../imagenes/enemy1/PÉSCADO.png'),
+    require('../imagenes/enemy1/SOMBRERIN.png'),
   ];
 
   const [enemyImage, setEnemyImage] = useState(null);
@@ -141,7 +140,22 @@ const Layout = ({ children }) => {
     // enemy.style.backgroundColor = RANDOMCOLOR();
   };  
 
-  // ------------------------------------------------------------------------------ //
+  // ------------------------------------------------------------------------------ //\
+  useEffect(() => {
+    // Cargar la imagen de manera asíncrona
+    const loadImage = () => {
+        const randomImage = enemyImages[Math.floor(Math.random() * enemyImages.length)];
+        const img = new Image();
+        img.src = randomImage;
+
+        img.onload = () => {
+            setEnemyImage(randomImage);
+            setShowImage(true);
+        };
+    };
+
+    loadImage();
+}, []);
 
   
   // HELPER DE DAMAGE
@@ -194,6 +208,12 @@ const Layout = ({ children }) => {
     setExpData(expData+enemyInstance.exp);
     setTempCount(tempCount + 1);
   }
+  const [showImage, setShowImage] = useState(false); // Estado para controlar la visibilidad de la imagen
+
+    const handleStart = () => {
+        setShowImage(true); // Mostrar la imagen cuando se hace clic en el botón "Comenzar"
+    };
+
 
   return (
     <div className='container'>
@@ -201,8 +221,12 @@ const Layout = ({ children }) => {
         
         <div >
           <header>
-            <h1>Kokoro Healing</h1>
-            <div id="reloj"></div>
+          <h1 className='titulogame'>
+              <a>
+                <img src={logo} alt="Logo" />
+              </a>
+          </h1>
+          <div id="reloj"></div>
           </header>
             <Message />
             <p>Bienvenido a nuestro juego clicker.</p>
@@ -231,7 +255,20 @@ const Layout = ({ children }) => {
             <span id="enemyHealth" className='spanenemy'> vida: {enemyInstance.vida}</span>
           </div> */}
           <div>
-            <button className='enemychange' onClick={attack} ><img className='imageenemy' src={enemyImage} alt="Enemigo" /></button>
+
+            {/* Mostrar el botón "Comenzar" si showImage es false */}
+            {!showImage && (
+            <button className='start-button' onClick={handleStart}>
+              Comenzar
+            </button>
+            )}
+
+            {/* Mostrar la imagen si showImage es true */}
+              {showImage && (
+                <button className='enemychange' onClick={attack}>
+                  <img className='imageenemy' src={enemyImage} alt="" />
+                </button>
+              )}
           </div>
         </div>
 
