@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import '../styles/stylesPP.css'
 
 class Formulario extends Component {
   constructor(props) {
@@ -45,48 +46,56 @@ class Formulario extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Formulario</h1>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Cual es tu nombre:
-            <input type="text" name="user" value={this.state.user} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            Nombre de tu mascota favorita:
-            <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            Raza de Mascota favorita:
-            <input type="text" name="raza" value={this.state.raza} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            Objeto con el que te sientas seguro en tu día a día:
-            <input type="text" name="objeto" value={this.state.objeto} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            Color favorito:
-            <input type="text" name="color" value={this.state.color} onChange={this.handleChange} />
-          </label>
-          <br />
-          <label>
-            Sentimiento más invasivo:
-            <input type="text" name="sentimiento" value={this.state.sentimiento} onChange={this.handleChange} />
-          </label>
-          <br />
-          <button type="submit">Enviar</button>
-        </form>
+      <>
+      <div className='fondoform'>
+        <div className='formularioreg'>
+          <h1>Formulario</h1>
+          <form onSubmit={this.handleSubmit}>
+            <label>
+              Cual es tu nombre:
+              <input type="text" name="user" value={this.state.user} onChange={this.handleChange} />
+            </label>
+            <br />
+            <label>
+              Nombre de tu mascota favorita:
+              <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} />
+            </label>
+            <br />
+            <label>
+              Raza de Mascota favorita:
+              <select type="select" name="raza" value={this.state.raza} onChange={this.handleChange} >
+                <option>seleccione</option>
+                <option>perro bastardo y la</option>
+              </select>
+    
+            </label>
+            <br />
+            <label>
+              Objeto con el que te sientas seguro en tu día a día:
+              <input type="text" name="objeto" value={this.state.objeto} onChange={this.handleChange} />
+            </label>
+            <br />
+            <label>
+              Color favorito:
+              <input type="text" name="color" value={this.state.color} onChange={this.handleChange} />
+            </label>
+            <br />
+            <label>
+              Sentimiento más invasivo:
+              <input type="text" name="sentimiento" value={this.state.sentimiento} onChange={this.handleChange} />
+            </label>
+            <br />
+            <button type="submit">Enviar</button>
+          </form>
 
-        {/* Muestra el botón "Jugar" si jugarHabilitado es true */}
-        {this.state.jugarHabilitado && (
-          <Link to="/game"><button onClick={this.iniciarJuego}>Jugar</button></Link>
-        )}
-
+          {/* Muestra el botón "Jugar" si jugarHabilitado es true */}
+          {this.state.jugarHabilitado && (
+            <Link to="/game"><button onClick={this.iniciarJuego}>Jugar</button></Link>
+          )}
+        </div>
       </div>
+      </>
+      
     );
   }
 }

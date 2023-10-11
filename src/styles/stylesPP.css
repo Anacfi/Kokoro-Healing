@@ -23,20 +23,24 @@
 /* Estilos para dispositivos móviles (ancho máximo de 768px) */
 @media (max-width: 768px) {
   .container {
-    flex-direction: column; /* Cambia la dirección de flex a columna */
+    flex-direction: column;
+     /* Cambia la dirección de flex a columna */
   }
 
   .estadisticas {
     order: 2; /* Cambia el orden del elemento, moviéndolo hacia abajo */
-    width: 100%; /* Ocupa el ancho completo en dispositivos móviles */
+    width: auto;
+    height: auto;
+    /* Ocupa el ancho completo en dispositivos móviles */
   }
 
   .game-container {
     order: 1; /* Cambia el orden del elemento, moviéndolo arriba */
+    width: 100%;
+    height: 300px;
   }
 }
 
-  
   .pet-message {
     color: #282c34;
   }
@@ -49,7 +53,6 @@
   align-items: center;
   background-color: #ffffff;
   padding: 20px;
-  border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
   width: 100%;
   background-size: cover;
@@ -151,3 +154,66 @@
   transform: scale(0.4); /* Escala el elemento al 70% de su tamaño original */
   /* Otros estilos si es necesario */
 }
+
+/* ------------------------------------------------------------------------------------------------------- */
+/* configuracion form */
+.fondoform{
+  background-image: url('/src/imagenes/fondoformulario.gif');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.formularioreg{
+  color: #fff;
+  padding: 2rem 3rem;
+  text-align: center;
+  width: 50%;
+  box-shadow: 0 0 25px #222;
+  backdrop-filter: blur(3px);
+  }
+@media (max-width: 768px) {
+  .formularioreg {
+    width: 80%;
+  }
+}
+.formularioreg button {
+  background-color: #3c572d;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.formularioreg label {
+  display: block;
+  font-weight: bold;
+}
+.formularioreg select {
+  width: 30%;
+}
+/* ---------------------------------------------------------------------------- */
+.modalinsert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+/* Estilo para el modal */
+
+.ReactModal__Content {
+  position: relative;
+  margin: auto;
+  height: 200px;
+  width: 80%; 
+  max-width: 400px; 
+  padding: 20px; 
+}
+/* ----------------------------------------------------------------------------------------------- */

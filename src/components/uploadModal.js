@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Modal from 'react-modal';
 import Dropzone from 'react-dropzone';
 import { Link } from 'react-router-dom';
+import '../styles/stylesPP.css'
 
 Modal.setAppElement('#root');
 
@@ -22,7 +23,9 @@ function FileUploadModal({ isOpen, onRequestClose, onFileSelected }) {
   };
 
   return (
-    <Modal
+    <>
+    <div className='modalinsert'>
+      <Modal
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Subir Archivo"
@@ -39,6 +42,8 @@ function FileUploadModal({ isOpen, onRequestClose, onFileSelected }) {
       </Dropzone>
       <Link to="/game"><button onClick={handleUpload}>Subir</button></Link>
     </Modal>
+    </div>
+    </>
   );
 }
 

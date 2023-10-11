@@ -2,9 +2,7 @@
 import UserData from '../sessions/data.json'; // JSON del Character
 import Character from '../models/character';
 import Enemy from '../models/enemy';
-
 import React, { useEffect, useState } from 'react';
-
 import Message from './message';
 import SessionTime from './sessionTime';
 import RecruitComponent from './RecruitComponent.js';
@@ -75,21 +73,23 @@ const Layout = ({ children }) => {
 
   // ------------------------------------------------------------------------------ //
   
-  const [intervalId, setIntervalId] = useState(null);
+  let intervalId = null;
 
   //FUNCION PARA ATACAR POR SEGUNDO
   const attackDamageSec = (damage) => {
-    console.log("Daño que se va a hacer: " + damage);
-  
-    // Detener el temporizador anterior si existe
-    if (intervalId) {
+    console.log("aaa");
+    console.log("aa: "+intervalId);
+
+  // Detener el temporizador anterior si existe
+    if (intervalId.isnumber) {  
+      console.log("true");
       clearInterval(intervalId);
     }
-  
-    // Crear un nuevo intervalo y almacenar su identificador
-    const newIntervalId = setInterval(() => {
-      console.log("Intervalo: " + newIntervalId);
-  
+
+    intervalId = setInterval(() => {
+      console.log("Intervalo antes: "+ intervalId);
+      console.log(damage);
+
       setEnemyInstance(prevEnemyInstance => {
         const newVida = prevEnemyInstance.vida - damage;
         const updatedEnemyInstance = new Enemy(
@@ -106,19 +106,12 @@ const Layout = ({ children }) => {
         
         return updatedEnemyInstance;
       });
-  
+
+      console.log("intervalo: " +intervalId);
+
     }, 1000); // 1000 milisegundos = 1 segundo
-  
-    // Almacenar el nuevo identificador de intervalo en el estado
-    setIntervalId(newIntervalId);
+
   };
-  
-  // UseEffect para detener el intervalo cuando el componente se desmonta
-  useEffect(() => {
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [intervalId]);
 
   // ------------------------------------------------------------------------------ //
 
@@ -143,6 +136,9 @@ const Layout = ({ children }) => {
     });
 
     setEnemyImage(randomImages)
+    //   // Cambiar el color de fondo aleatoriamente
+    // let enemy = document.querySelector(".enemy");
+    // enemy.style.backgroundColor = RANDOMCOLOR();
   };  
 
   // ------------------------------------------------------------------------------ //\
@@ -234,7 +230,7 @@ const Layout = ({ children }) => {
           <div id="reloj"></div>
           </header>
             <Message />
-            <p>Bienvenido a nuestro juego clicker.{localStorage.getItem('nick')}</p>
+            <p>Bienvenido a nuestro juego clicker.</p>
             
             <div id="reloj"></div>
             <span id="enemyHealth" className='spanenemy'> vida del enemigo: {enemyInstance.vida}</span>
