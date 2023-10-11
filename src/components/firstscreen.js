@@ -3,11 +3,12 @@ import '../../src/firstscreen.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png'; 
 
+import Modal from './modalSession';
 const Firstscreen = ()=> {
     return (
         <>
         <div>
-            <div class="parent">
+            <div className="parent">
                 <div className='tituloGame'>
                     <h2 className='titulo'>
                         <a>
@@ -16,8 +17,8 @@ const Firstscreen = ()=> {
                     </h2>
                 </div>
                 <div className='buttons'>
-                    <Link to="/game"><button id="empezar" className='empezar'></button></Link>
-                    <button id="continuar" className='continuar'></button>
+                    <Link to="/nuevoJuego"><button id="empezar" className='empezar'></button></Link>
+                    <Modal/>
                 </div>
             </div> 
         </div> 
