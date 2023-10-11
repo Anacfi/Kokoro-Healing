@@ -8,14 +8,34 @@
     height: 100vh;
 }
 
-.estadisticas{
-    display: flex;
-    justify-content: left;
-    width: 30%;
-    background-color: #372E21;
-    
+.estadisticas {
+  display: flex;
+  flex-direction: column;
+  
+  width: 30%;
+  background-color: #372E21;
+}
+.titulogame img {
+  max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
+  height: auto;
+}
 
-} 
+/* Estilos para dispositivos móviles (ancho máximo de 768px) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Cambia la dirección de flex a columna */
+  }
+
+  .estadisticas {
+    order: 2; /* Cambia el orden del elemento, moviéndolo hacia abajo */
+    width: 100%; /* Ocupa el ancho completo en dispositivos móviles */
+  }
+
+  .game-container {
+    order: 1; /* Cambia el orden del elemento, moviéndolo arriba */
+  }
+}
+
   
   .pet-message {
     color: #282c34;
@@ -46,6 +66,8 @@
     padding: 10px 20px; 
     border: none;
 }
+
+
 .guardarbutton{
     background-image: url('../imagenes/guardar\ partida.png'); 
     background-size: cover; 
@@ -56,6 +78,18 @@
     width:  125px; 
     height: 85px; 
     cursor: pointer; 
+}
+@media (max-width: 768px) {
+  .guardarbutton {
+    width:  60px; 
+    height: 42px; 
+  }
+
+
+
+  .game-container {
+    order: 1; /* Cambia el orden del elemento, moviéndolo arriba */
+  }
 }
 
 .character {
@@ -80,7 +114,6 @@
     color: #700000;
 }
 
-
 .attack-button {
   padding: 10px 20px;
   font-size: 16px;
@@ -91,8 +124,30 @@
   outline: none;
   margin: 5px;
 }
+.imageenemy {
+  max-width: 200%; /* La imagen nunca será más ancha que su contenedor */
+  height: auto; /* La altura se ajustará automáticamente para mantener la proporción original */
+}
 
-.titulogame img{
-    width: 400px;
-    height: auto; 
+@media (max-width: 768px) {
+  .titulogame img {
+    display: none;
+  }
+}
+@media (max-width: 768px) {
+  .imageenemy {
+    max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
+    height: auto; /* La altura se ajustará automáticamente para mantener la proporción original */
+  }
+}
+.enemycontainer{
+  justify-content:center ;
+  height: auto;
+  width: 300px;
+}
+.aliado {
+  top: -100px; /* Ajusta la distancia desde la parte superior */
+  right: 800px; /* Ajusta la distancia desde la derecha */
+  transform: scale(0.4); /* Escala el elemento al 70% de su tamaño original */
+  /* Otros estilos si es necesario */
 }

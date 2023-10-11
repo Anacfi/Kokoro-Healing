@@ -9,6 +9,7 @@ import RecruitComponent from './RecruitComponent.js';
 import SaveComponent from './saveSessionComponent';
 import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
+import aliado from '../imagenes/aliados/aliado.png';
 
 const Layout = ({ children }) => {
 
@@ -249,21 +250,18 @@ const Layout = ({ children }) => {
 
       </div>
       <div className="game-container">
-         {/* Contenedor TABLERO */}
         <div className='enemycontainer'>
           {/* <div className="vidaenemigo">
             <span id="enemyHealth" className='spanenemy'> vida: {enemyInstance.vida}</span>
           </div> */}
           <div>
 
-            {/* Mostrar el botón "Comenzar" si showImage es false */}
             {!showImage && (
             <button className='start-button' onClick={handleStart}>
               Comenzar
             </button>
             )}
 
-            {/* Mostrar la imagen si showImage es true */}
               {showImage && (
                 <button className='enemychange' onClick={attack}>
                   <img className='imageenemy' src={enemyImage} alt="" />
@@ -273,7 +271,7 @@ const Layout = ({ children }) => {
         </div>
 
         <div className='guardarjson'>
-        <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
+          <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
         </div>
       </div> 
     </div>
@@ -283,4 +281,3 @@ const Layout = ({ children }) => {
 };
 
 export default Layout;
-
