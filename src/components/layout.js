@@ -14,12 +14,9 @@ import aliado from '../imagenes/aliados/aliado.png';
 const Layout = ({ children }) => {
 
   const enemyImages =[
-    require('../imagenes/enemy1/BUHO.png'),
-    require('../imagenes/enemy1/HONGO.png'),
-    require('../imagenes/enemy1/MURCIELAGO.png'),
-    require('../imagenes/enemy1/PÉSCADO.png'),
-    require('../imagenes/enemy1/SOMBRERIN.png'),
     require('../imagenes/enemy1/mirror.png'),
+    require('../imagenes/enemy1/CactusOwl.png'),
+    require('../imagenes/enemy1/ancenstralblue.png'),
   ];
 
   const session = {
