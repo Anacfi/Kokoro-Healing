@@ -18,8 +18,6 @@ function FileUploadModal({ isOpen, onRequestClose, onFileSelected }) {
     if (selectedFile) {
       onFileSelected(selectedFile);
     }
-    // Cierra la ventana modal
-    onRequestClose();
   };
 
   return (
@@ -29,6 +27,23 @@ function FileUploadModal({ isOpen, onRequestClose, onFileSelected }) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       contentLabel="Subir Archivo"
+
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fondo oscuro transparente
+          backdropFilter: 'blur(3px)', // Filtro de fondo
+        },
+        content: {
+          backgroundColor: 'rgba(255, 255, 255, 0.7)', // Fondo blanco semitransparente
+          textAlign: 'center', // Alineación del texto
+          boxShadow: '0 0 25px #222', // Sombra del contenido
+          width: '300px', // Ancho del modal
+          margin: 'auto', // Centrar horizontalmente
+          border: '1px solid #ccc', // Borde
+          borderRadius: '5px', // Bordes redondeados
+          padding: '20px' // Espaciado interno
+        }
+      }}
     >
       <h2>Subir Archivo</h2>
       <Dropzone onDrop={handleDrop}>
@@ -40,7 +55,8 @@ function FileUploadModal({ isOpen, onRequestClose, onFileSelected }) {
           </div>
         )}
       </Dropzone>
-      <Link to="/game"><button onClick={handleUpload}>Subir</button></Link>
+      <button onClick={handleUpload}>Subir</button>
+      <Link to="/game"><button>Jugar</button></Link>
     </Modal>
     </div>
     </>

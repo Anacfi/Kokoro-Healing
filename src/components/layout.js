@@ -19,35 +19,48 @@ const Layout = ({ children }) => {
     require('../imagenes/enemy1/MURCIELAGO.png'),
     require('../imagenes/enemy1/PÉSCADO.png'),
     require('../imagenes/enemy1/SOMBRERIN.png'),
+    require('../imagenes/enemy1/mirror.png'),
   ];
+
+  const session = {
+    'UserExp': localStorage.getItem('UserExp'),
+    'Fuerza': localStorage.getItem('Fuerza'),
+    'Vida': localStorage.getItem('Vida'),
+    'EnemyExp': localStorage.getItem('EnemyExp')
+  }
+
+  const UserExp = parseInt(session.UserExp);
+  const Fuerza = parseInt(session.Fuerza);
+  const Vida = parseInt(session.Vida);
+  const EnemyExp = parseInt(session.EnemyExp);
 
   const [enemyImage, setEnemyImage] = useState(null);
 
   const [characterInstance, setCharacterInstance] = useState(
     new Character(  
       UserData.Character.Nombre, 
-      UserData.Character.Fuerza
+      Fuerza
       )
   );// Crear una instancia de la clase Character
   
   const [enemyInstance, setEnemyInstance] = useState(
     new Enemy(
       UserData.Enemy.Nombre, 
-      UserData.Enemy.Vida,
+      Vida,
       UserData.Enemy.Defensa,
-      UserData.Enemy.exp
+      EnemyExp
     )
   ); // Crear una instancia de la clase Enemigo
   
-  const [expData, setExpData] = useState(UserData.Exp);       // Experiencia
+  const [expData, setExpData] = useState(UserExp);       // Experiencia
   const [tempCount, setTempCount] = useState(2);       // Experiencia
-  const [damageTemp, setDamageTemp] = useState(0);       // Experiencia
-  
 
   // ------------------------------------------------------------------------------ //
 
-  //FUNCION PARA ATACARz
+  //FUNCION PARA ATACAR
   const attack = () => {
+
+    console.log(characterInstance.fuerza);
     
     const newVida = enemyInstance.vida - characterInstance.fuerza;
 
@@ -73,23 +86,21 @@ const Layout = ({ children }) => {
 
   // ------------------------------------------------------------------------------ //
   
-  let intervalId = null;
+  const [intervalId, setIntervalId] = useState(null);
 
   //FUNCION PARA ATACAR POR SEGUNDO
   const attackDamageSec = (damage) => {
-    console.log("aaa");
-    console.log("aa: "+intervalId);
-
-  // Detener el temporizador anterior si existe
-    if (intervalId.isnumber) {  
-      console.log("true");
+    console.log("Daño que se va a hacer: " + damage);
+  
+    // Detener el temporizador anterior si existe
+    if (intervalId) {
       clearInterval(intervalId);
     }
-
-    intervalId = setInterval(() => {
-      console.log("Intervalo antes: "+ intervalId);
-      console.log(damage);
-
+  
+    // Crear un nuevo intervalo y almacenar su identificador
+    const newIntervalId = setInterval(() => {
+      console.log("Intervalo: " + newIntervalId);
+  
       setEnemyInstance(prevEnemyInstance => {
         const newVida = prevEnemyInstance.vida - damage;
         const updatedEnemyInstance = new Enemy(
@@ -106,13 +117,19 @@ const Layout = ({ children }) => {
         
         return updatedEnemyInstance;
       });
-
-      console.log("intervalo: " +intervalId);
-
+  
     }, 1000); // 1000 milisegundos = 1 segundo
-
+  
+    // Almacenar el nuevo identificador de intervalo en el estado
+    setIntervalId(newIntervalId);
   };
-
+  
+  // UseEffect para detener el intervalo cuando el componente se desmonta
+  useEffect(() => {
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [intervalId]);
   // ------------------------------------------------------------------------------ //
 
   // FUNCION PARA EL SPAWNENEMY
@@ -219,20 +236,17 @@ const Layout = ({ children }) => {
   return (
     <div className='container'>
       <div className='estadisticas'>
-        
         <div >
           <header>
-          <h1 className='titulogame'>
-              <a>
-                <img src={logo} alt="Logo" />
-              </a>
-          </h1>
-          <div id="reloj"></div>
+            <h1 className='titulogame'>
+                <a>
+                  <img src={logo} alt="Logo" />
+                </a>
+            </h1>
           </header>
-            <Message />
-            <p>Bienvenido a nuestro juego clicker.</p>
-            
-            <div id="reloj"></div>
+          <Message />
+          <p>Bienvenido a nuestro juego clicker {localStorage.getItem('User')}</p>
+          <div id="reloj"></div>
             <span id="enemyHealth" className='spanenemy'> vida del enemigo: {enemyInstance.vida}</span>
             
             <div className="scoreboard">

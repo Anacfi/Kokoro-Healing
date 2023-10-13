@@ -13,8 +13,9 @@ const SaveComponent = ({ UserData, EnemyData, CharacterData, expData }) => {
     const newDataSession = { ...DataSession };
 
     // Realizar las ediciones necesarias en newDataSession
-    console.log(CharacterData);
+    newDataSession.User = localStorage.getItem('User');
     newDataSession.Exp = expData; 
+    newDataSession.Character.Fuerza = CharacterData.fuerza;
     newDataSession.Enemy.Vida = EnemyData.vida;
     newDataSession.Enemy.exp = EnemyData.exp; 
 

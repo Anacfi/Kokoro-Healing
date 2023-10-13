@@ -23,7 +23,13 @@ function Modal() {
         const fileData = JSON.parse(event.target.result); // Convertimos el archivo en JSON
         console.log(fileData);
   
-        localStorage.setItem('User',fileData.Character.Nombre);
+        localStorage.setItem('User',fileData.User);
+        localStorage.setItem('Coins',fileData.Coins);
+        localStorage.setItem('UserExp',fileData.Exp);
+        localStorage.setItem('Fuerza',fileData.Character.Fuerza);
+        localStorage.setItem('Vida',fileData.Enemy.Vida);
+        localStorage.setItem('EnemyExp',fileData.Enemy.exp);
+
       };
   
       // Esto inicia la lectura del archivo

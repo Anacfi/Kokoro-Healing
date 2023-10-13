@@ -24,10 +24,6 @@ const SessionTime = () => {
       clearInterval(intervalId);
     };
   }, []); // El arreglo vacío [] asegura que este efecto se ejecute solo una vez al montar el componente
-
-  return (
-    <div id="reloj">00:00:00</div>
-  );
 }
 
 export default SessionTime;

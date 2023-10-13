@@ -12,6 +12,11 @@ class Formulario extends Component {
       objeto: '',
       color: '',
       sentimiento: '',
+      coins: 0,
+      enemyExp: 5,
+      fuerza: 10, 
+      userExp: 0,
+      vida: 10,
       jugarHabilitado: false // Inicialmente, el juego no está habilitado
     };
   }
@@ -25,6 +30,11 @@ class Formulario extends Component {
     try {
       
       localStorage.setItem('User', this.state.user);
+      localStorage.setItem('Coins', this.state.coins);
+      localStorage.setItem('EnemyExp', this.state.enemyExp);
+      localStorage.setItem('Fuerza', this.state.fuerza);
+      localStorage.setItem('UserExp', this.state.userExp);
+      localStorage.setItem('Vida', this.state.vida);
 
       // Se habilita la jugabilidad con los datos
       this.setState({ jugarHabilitado: true });
