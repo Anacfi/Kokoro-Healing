@@ -74,8 +74,10 @@ class Formulario extends Component {
             <label>
               Raza de Mascota favorita:
               <select type="select" name="raza" value={this.state.raza} onChange={this.handleChange} >
-                <option>seleccione</option>
-                <option>perro bastardo y la</option>
+                <option>Seleccione</option>
+                <option>Perro</option>
+                <option>Gato</option>
+                <option>Pajaro</option>
               </select>
     
             </label>

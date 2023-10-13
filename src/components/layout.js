@@ -238,16 +238,17 @@ const Layout = ({ children }) => {
       <div className='estadisticas'>
         <div >
           <header>
-            <h1 className='titulogame'>
-                <a>
-                  <img src={logo} alt="Logo" />
-                </a>
-            </h1>
+          <h1 className='titulogame'>
+              <a>
+                <img src={logo} alt="Logo" />
+              </a>
+          </h1>
+          <p className='bienvenidaPlayer'>bienvenido {localStorage.getItem('User')}</p>
+          <div className='reloj' id="reloj"></div>
           </header>
-          <Message />
-          <p>Bienvenido a nuestro juego clicker {localStorage.getItem('User')}</p>
-          <div id="reloj"></div>
-            <span id="enemyHealth" className='spanenemy'> vida del enemigo: {enemyInstance.vida}</span>
+            <Message />   
+            <div id="reloj"></div>
+            <span id="enemyHealth" className='spanenemy'> Resistencia Emocional: {enemyInstance.vida}</span>
             
             <div className="scoreboard">
               <span id="score"> Experiencia emocional : {expData}</span>
@@ -258,7 +259,6 @@ const Layout = ({ children }) => {
             <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
 
             <SessionTime />  {/* tiempo */}
-          
             {children}
         </div>
 

@@ -2,6 +2,12 @@
     color : black;
     border: 1px solid red;
   } */
+@font-face{
+  font-family: 'Daydream';
+  src: url(/src/fonts/MonsterFriendFore.otf);
+  font-weight: bold;
+  font-style: bold;
+}
 .container{
     display: flex;
     width: 100%;
@@ -9,12 +15,22 @@
 }
 
 .estadisticas {
+  background-image: url("../imagenes/fondoestadisticas.jpg");
   display: flex;
   flex-direction: column;
-  
+  font-family: Daydream;
+  color: #3f1e03;
   width: 30%;
-  background-color: #372E21;
+  background-color: #5c725c;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
 }
+.reloj{
+  margin-left: 10px;
+}
+
 .titulogame img {
   max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
   height: auto;
@@ -47,7 +63,7 @@
   
 
 .game-container {
-  background-image: url("../imagenes/mapleforest02.gif");
+  background-image: url("../imagenes/fondoformulario.gif");
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,17 +131,38 @@
 
 .spanenemy{
     color: #700000;
+    margin-left: 10px;
+}
+.mensaje{
+  margin-left: 10px;
+}
+
+.pet{
+  margin-left: 10px;
+}
+.bienvenidaPlayer{
+  margin-left: 10px;
+}
+.scoreboard{
+  margin-left: 10px;
+}
+.recruit{
+  margin-left: 10px;
+}
+.sesiontime{
+  margin-left: 10px;
 }
 
 .attack-button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #cc823d;
+  background-color: #3f69629a;
   border: none;
   border-radius: 5px;
   cursor: pointer;  
   outline: none;
   margin: 5px;
+  font-family: Daydream;
 }
 .imageenemy {
   max-width: 200%; /* La imagen nunca será más ancha que su contenedor */

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Companion from '../models/companions';
 import UserData from '../sessions/data.json'; // JSON del Character
+import '../styles/stylesPP.css'
 
 const Message = () => {
 

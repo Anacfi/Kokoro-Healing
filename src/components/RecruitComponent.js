@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../styles/stylesPP.css'
 
 const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, expData}) => {
   const [recruits, setRecruits] = useState(0);
@@ -85,13 +86,13 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
   const expCost = () => {
     const newExp = (expData - cost)
     return newExp;
-  }
+  } 
 
   return (
-    <div>
-      <button className='attack-button' onClick={handleRecruitDamageClick}>Reclutar Daño</button>
-      <button className='attack-button' onClick={handleRecruitExpClick}>Reclutar Exp</button>
-      <button className='attack-button' onClick={handleRecruitDamageSecClick}>Reclutar Daño/sec</button>
+    <div className='recruit'>
+      <button className='attack-button' onClick={handleRecruitDamageClick}>mejorar Impacto por click</button>
+      <button className='attack-button' onClick={handleRecruitExpClick}>mejorar experiencia </button>
+      <button className='attack-button' onClick={handleRecruitDamageSecClick}>Impacto por click/sec</button>
 
       {mostrarMensajeError && <p id='mensajeError'>No tienes suficiente experiencia aún.</p>}
       <p>Reclutas: {recruits}</p>
