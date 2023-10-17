@@ -17,9 +17,12 @@ class Formulario extends Component {
       fuerza: 10, 
       userExp: 0,
       vida: 10,
-      jugarHabilitado: false // Inicialmente, el juego no está habilitado
+      mostrarPrimerFormulario: true, // Mostrar el primer formulario inicialmente
+      jugarHabilitado: false,
+      cardSeleccionada: null,
     };
   }
+
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -36,10 +39,8 @@ class Formulario extends Component {
       localStorage.setItem('UserExp', this.state.userExp);
       localStorage.setItem('Vida', this.state.vida);
 
-      // Se habilita la jugabilidad con los datos
       this.setState({ jugarHabilitado: true });
 
-      // Reinicia el estado del formulario después de enviar
       this.setState({
         user: '',
         nombre: '',
@@ -48,18 +49,43 @@ class Formulario extends Component {
         color: '',
         sentimiento: '',
       });
+      this.setState({ mostrarPrimerFormulario: false });
+      
 
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
     }
   }
 
+  handleSubmit2 = (e) => {
+    e.preventDefault();
+
+    this.setState({ jugarHabilitado: true });
+  }
+  handleCardSeleccionada = (card) => {
+    if (this.state.cardSeleccionada === card) {
+      this.setState({ cardSeleccionada: null });
+      localStorage.removeItem('cardSeleccionada');
+    } else {
+      this.setState({ cardSeleccionada: card });
+      localStorage.setItem('cardSeleccionada', JSON.stringify(card));
+    }
+  }
+
+
   render() {
+    const cards = [
+      { id: 1, name: 'Perro' },
+      { id: 2, name: 'Gato' },
+      { id: 3, name: 'Ave' },
+    ];
+    console.log(this.handleCardSeleccionada)
     return (
       <>
       <div className='fondoform'>
         <div className='formularioreg'>
-          <h1>Formulario</h1>
+          <h1>Registro</h1>
+          {this.state.mostrarPrimerFormulario ? (
           <form onSubmit={this.handleSubmit}>
             <label>
               Cual es tu nombre:
@@ -70,8 +96,7 @@ class Formulario extends Component {
               Nombre de tu mascota favorita:
               <input type="text" name="nombre" value={this.state.nombre} onChange={this.handleChange} />
             </label>
-            <br />
-            <label>
+            {/* <label>
               Raza de Mascota favorita:
               <select type="select" name="raza" value={this.state.raza} onChange={this.handleChange} >
                 <option>Seleccione</option>
@@ -80,10 +105,10 @@ class Formulario extends Component {
                 <option>Pajaro</option>
               </select>
     
-            </label>
+            </label> */}
             <br />
             <label>
-              Objeto con el que te sientas seguro en tu día a día:
+              Objeto con el que te sientas seguro:
               <input type="text" name="objeto" value={this.state.objeto} onChange={this.handleChange} />
             </label>
             <br />
@@ -92,15 +117,31 @@ class Formulario extends Component {
               <input type="text" name="color" value={this.state.color} onChange={this.handleChange} />
             </label>
             <br />
-            <label>
-              Sentimiento más invasivo:
+            {/* <label>
+              Sentimiento mas invasivo:
               <input type="text" name="sentimiento" value={this.state.sentimiento} onChange={this.handleChange} />
-            </label>
+            </label> */}
             <br />
             <button type="submit">Enviar</button>
           </form>
+          ) : (
+            <form onSubmit={this.handleSubmit2}>
 
-          {/* Muestra el botón "Jugar" si jugarHabilitado es true */}
+                <h2>Selecciona una mascota:</h2>
+                <div className="cards-container">
+                  {cards.map((card) => (
+                    <div
+                      key={card.id}
+                      className={`card ${this.state.cardSeleccionada === card ? 'selected' : ''}`}
+                      onClick={() => this.handleCardSeleccionada(card)}
+                    >
+                      {card.name}
+                    </div>
+                  ))}
+                </div>
+              </form>
+          )}
+
           {this.state.jugarHabilitado && (
             <Link to="/game"><button onClick={this.iniciarJuego}>Jugar</button></Link>
           )}

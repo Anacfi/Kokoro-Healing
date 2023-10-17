@@ -207,12 +207,13 @@
   align-items: center; 
 }
 .formularioreg{
-  color: #fff;
+  color: #ffffff;
   padding: 2rem 3rem;
   text-align: center;
   width: 50%;
   box-shadow: 0 0 25px #222;
   backdrop-filter: blur(3px);
+  font-family: Daydream;
   }
 @media (max-width: 768px) {
   .formularioreg {
@@ -230,6 +231,7 @@
 .formularioreg label {
   display: block;
   font-weight: bold;
+  font-family: Daydream;
 }
 .formularioreg select {
   width: 30%;
@@ -254,3 +256,19 @@
   padding: 20px; 
 }
 /* ----------------------------------------------------------------------------------------------- */
+/*  */
+.card {
+  display: flex;
+  display: inline-block;
+  border: 5px solid #133836;
+  padding: 50px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: rgb(197, 168, 73); /* Color de fondo predeterminado */
+  color: rgb(14, 88, 109); /* Color de texto predeterminado */
+}
+/* Estilo adicional para tarjetas con hover (cuando el mouse pasa por encima) */
+.card:hover {
+  background-color: #a3d871; /* Cambia el color de fondo al pasar el mouse por encima */
+  border: 5px solid #174d63; /* Cambia el borde al pasar el mouse por encima */
+}
