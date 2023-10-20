@@ -2,9 +2,10 @@ import React from 'react';
 import '../../src/firstscreen.css'
 import { Link } from 'react-router-dom';
 import logo from '../imagenes/logo.png'; 
-
 import Modal from './modalSession';
+
 const Firstscreen = ()=> {
+
     return (
         <>
         <div>
