@@ -10,6 +10,7 @@ const CharacterComponent = () => {
     setShowMessages(!showMessages); // Cambia el valor actual al contrario
   };
 
+  
   return (
     <>
       <div className="character" onClick={toggleMessages}>
