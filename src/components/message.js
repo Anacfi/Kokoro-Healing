@@ -34,9 +34,8 @@ const Message = () => {
   
 
   return (
-  <div id="pet" className='pet'>🐱
+  <div id="pet" className='pet'>
     <p id='pet-message'>
-    
     </p>
   </div>
 );

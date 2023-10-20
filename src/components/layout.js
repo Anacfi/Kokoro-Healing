@@ -10,6 +10,7 @@ import SaveComponent from './saveSessionComponent';
 import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
 import aliado from '../imagenes/aliados/aliado.png';
+import CharacterComponent from './character';
 
 const Layout = ({ children }) => {
 
@@ -17,6 +18,12 @@ const Layout = ({ children }) => {
     require('../imagenes/enemy1/mirror.png'),
     require('../imagenes/enemy1/CactusOwl.png'),
     require('../imagenes/enemy1/ancenstralblue.png'),
+  ];
+
+  const aliados = [
+    { nombre: 'pajaro', imagen: '../imagenes/aliados/aliado.png' },
+    { nombre: 'perro', imagen: 'ruta-aliado2.png' },
+    { nombre: 'gato', imagen: 'ruta-aliado3.png' },
   ];
 
   const session = {
@@ -243,7 +250,7 @@ const Layout = ({ children }) => {
           <p className='bienvenidaPlayer'>bienvenido {localStorage.getItem('User')}</p>
           <div className='reloj' id="reloj"></div>
           </header>
-            <Message />   
+              
             <div id="reloj"></div>
             <span id="enemyHealth" className='spanenemy'> Resistencia Emocional: {enemyInstance.vida}</span>
             
@@ -261,6 +268,7 @@ const Layout = ({ children }) => {
 
       </div>
       <div className="game-container">
+        <CharacterComponent/>
         <div className='enemycontainer'>
           {/* <div className="vidaenemigo">
             <span id="enemyHealth" className='spanenemy'> vida: {enemyInstance.vida}</span>

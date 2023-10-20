@@ -1,7 +1,7 @@
-/* div {
+ /* div {
     color : black;
     border: 1px solid red;
-  } */
+  }  */
 @font-face{
   font-family: 'Daydream';
   src: url(/src/fonts/MonsterFriendFore.otf);
@@ -20,13 +20,13 @@
   flex-direction: column;
   font-family: Daydream;
   color: #3f1e03;
-  width: 30%;
   background-color: #5c725c;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
+  width: 500px; 
 }
+
 .reloj{
   margin-left: 10px;
 }
@@ -52,29 +52,25 @@
 
   .game-container {
     order: 1; /* Cambia el orden del elemento, moviéndolo arriba */
-    width: 100%;
+    width: auto;
     height: 300px;
   }
 }
-
-  .pet-message {
-    color: #282c34;
-  }
   
 
-.game-container {
-  background-image: url("../imagenes/fondoformulario.gif");
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #ffffff;
-  padding: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+  .game-container {
+    background-image: url("../imagenes/fondoformulario.gif");
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: auto; /* Establece la altura al 100% de la pantalla */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display:flex;
+    justify-content: space-between
+    
+  }
 
 
 .guardarjson{
@@ -111,13 +107,6 @@
   }
 }
 
-.character {
-  width: 100px;
-  height: 100px;
-  background-color: #00aaff;
-  margin-bottom: 20px;
-}
-
 .enemy {
   display: flex;
   align-items: center;
@@ -126,20 +115,23 @@
   height: 100px;
   background-color: #ff0000;
   margin-bottom: 20px;
-  font-size: 18px; 
+  font-size: 18px;  
 }
 
 .spanenemy{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
     color: #700000;
     margin-left: 10px;
+    
 }
 .mensaje{
   margin-left: 10px;
 }
 
-.pet{
-  margin-left: 10px;
-}
+
 .bienvenidaPlayer{
   margin-left: 10px;
 }
@@ -165,8 +157,12 @@
   font-family: Daydream;
 }
 .imageenemy {
-  max-width: 200%; /* La imagen nunca será más ancha que su contenedor */
-  height: auto; /* La altura se ajustará automáticamente para mantener la proporción original */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 200%;
+  height: auto; 
 }
 
 @media (max-width: 768px) {
@@ -176,22 +172,20 @@
 }
 @media (max-width: 768px) {
   .imageenemy {
+    position: relative;
     max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
     height: auto; /* La altura se ajustará automáticamente para mantener la proporción original */
   }
 }
-.enemycontainer{
-  justify-content:center ;
-  height: auto;
-  width: 300px;
+.enemycontainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  height: auto; 
+  width: 500px;
+  margin-right: 550px; 
 }
-.aliado {
-  top: -100px; /* Ajusta la distancia desde la parte superior */
-  right: 800px; /* Ajusta la distancia desde la derecha */
-  transform: scale(0.4); /* Escala el elemento al 70% de su tamaño original */
-  /* Otros estilos si es necesario */
-}
-
 /* ------------------------------------------------------------------------------------------------------- */
 /* configuracion form */
 .fondoform{
@@ -207,12 +201,13 @@
   align-items: center; 
 }
 .formularioreg{
-  color: #fff;
+  color: #ffffff;
   padding: 2rem 3rem;
   text-align: center;
   width: 50%;
   box-shadow: 0 0 25px #222;
   backdrop-filter: blur(3px);
+  font-family: Daydream;
   }
 @media (max-width: 768px) {
   .formularioreg {
@@ -230,6 +225,7 @@
 .formularioreg label {
   display: block;
   font-weight: bold;
+  font-family: Daydream;
 }
 .formularioreg select {
   width: 30%;
@@ -254,3 +250,58 @@
   padding: 20px; 
 }
 /* ----------------------------------------------------------------------------------------------- */
+/*  */
+.card {
+  display: flex;
+  display: inline-block;
+  border: 5px solid #133836;
+  padding: 50px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: rgb(197, 168, 73); /* Color de fondo predeterminado */
+  color: rgb(14, 88, 109); /* Color de texto predeterminado */
+}
+/* Estilo adicional para tarjetas con hover (cuando el mouse pasa por encima) */
+.card:hover {
+  background-color: #a3d871; /* Cambia el color de fondo al pasar el mouse por encima */
+  border: 5px solid #174d63; /* Cambia el borde al pasar el mouse por encima */
+}
+
+/* --------------------------------------------------------------------------------------- */
+.character {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  position: relative;
+  margin-left: 0px; /* Añade margen izquierdo para separar del borde izquierdo */
+}
+
+@media (max-width: 768px) {
+  .enemycontainer{
+    margin-right: 50px;
+  }
+}
+.pet{
+  position: relative;
+  color: #e9e9e9;
+  font-family: Daydream;
+  background-color: rgb(10, 69, 69);
+  border-radius: 20px;
+  height: 100px;
+  width: 320px;
+}
+@media (max-width: 768px) {
+  .character {
+    display: none;
+  }
+  .pet{
+    display: none;
+  }
+}
+.imagenaliado{
+  width: 230px;
+  height: 230px;
+}
