@@ -10,6 +10,8 @@ import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
 import CharacterComponent from './character';
 
+
+
 const Layout = ({ children }) => {
 
   const backgroundImages = [
