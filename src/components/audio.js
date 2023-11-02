@@ -30,12 +30,10 @@ const Audiogame = () => {
     <div className="audio-control-container">
       <audio ref={audioRef} src={backgroundMusicSrc} loop />
       {musicPlaying ? (
-        <button className="audio-control-button" onClick={pauseMusic}>
-          Pausar Música
+        <button className="audio-control-buttonoff" onClick={pauseMusic}>
         </button>
       ) : (
-        <button className="audio-control-button" onClick={playMusic}>
-          Reproducir Música
+        <button className="audio-control-buttonon" onClick={playMusic}>
         </button>
       )}
     </div>
