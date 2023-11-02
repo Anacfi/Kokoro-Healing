@@ -309,19 +309,59 @@
 .audio-control-container {
   position: absolute;
   top: 20px; 
-  right: 20px; 
+  right: 45px; 
   margin-top: 90px;
 }
 
-.audio-control-button {
-  background-color: #ff7b0094;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
+.audio-control-buttonon {
+  background-image: url("../imagenes/iconosonidooff.png");
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  color: transparent; 
+  border: none; 
+  cursor: pointer; 
+  padding: 40px 40px;
+  cursor: pointer;
+}
+.audio-control-buttonoff {
+  background-image: url("../imagenes/iconossonidoon.png");
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
+  color: transparent; 
+  border: none; 
+  cursor: pointer; 
+  padding: 40px 40px;
   cursor: pointer;
 }
 
 .audio-control-button:hover {
   background-color: rgba(179, 137, 0, 0.575);
 }
+@media (max-width: 768px) {
+  .audio-control-container {
+    position: absolute;
+    top: 5px; 
+    right: 30px; 
+    margin-top: 70px;
+  }
+  
+  .audio-control-buttonon {
+    background-image: url("../imagenes/iconossonidoon.png");
+    padding: 20px 20px;
+    cursor: pointer;
+  }
+
+  .audio-control-buttonoff {
+    background-image: url("../imagenes/iconosonidooff.png");
+    padding: 20px 20px;
+    cursor: pointer;
+  }
+
+
+  .audio-control-button:hover {
+    background-color: rgba(179, 137, 0, 0.575);
+  }
+}
+
