@@ -256,7 +256,7 @@ const Layout = ({ children }) => {
   const changeBackground = () => {
     setBackgroundImageIndex((backgroundImageIndex + 1) % backgroundImages.length);
   };
-
+  
 
   return (
     <div className='container'>
@@ -275,6 +275,7 @@ const Layout = ({ children }) => {
             <div id="reloj"></div>
             <span id="enemyHealth" className='spanenemy'> Resistencia Emocional: {enemyInstance.vida}</span>
             
+            
             <div className="scoreboard">
               <span id="score"> Experiencia emocional : {expData}</span>
               {children}
@@ -284,6 +285,18 @@ const Layout = ({ children }) => {
             <div className="scoreboard">
               <span id="enemiesDefeated" className=''> Enemigos derrotados: {enemiesDefeated}</span>
             </div>
+
+            <div className="barra-vida-container">
+          <div className="barra-vida">
+          <div
+          className="vida-actual"
+         style={{
+         width: `${(enemyInstance.vida / Vida) * 100}%`,
+         maxWidth: '100%', // Establece un ancho máximo del 100%
+         }}
+       ></div>
+          </div>
+        </div>
 
             <SessionTime />  {/* tiempo */}
             {children}
