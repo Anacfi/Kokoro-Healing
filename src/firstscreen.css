@@ -65,8 +65,8 @@ button{
 
 .audio-control-container {
     position: absolute;
-    top: 20px; /* Ajusta la posición según tus necesidades */
-    right: 20px; /* Ajusta la posición según tus necesidades */
+    top: 20px; 
+    right: 20px; 
   }
   
   .audio-control-button {

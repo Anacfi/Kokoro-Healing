@@ -9,6 +9,7 @@ import SaveComponent from './saveSessionComponent';
 import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
 import CharacterComponent from './character';
+import Audiogame from './audio.js'; 
 
 
 
@@ -311,7 +312,7 @@ const Layout = ({ children }) => {
               )}
           </div>
         </div>
-
+        <Audiogame />
         <div className='guardarjson'>
           <SaveComponent UserData={UserData} CharacterData={characterInstance} EnemyData={enemyInstance} expData={expData}></SaveComponent>
         </div>

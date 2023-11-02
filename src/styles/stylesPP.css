@@ -305,3 +305,23 @@
   width: 290px;
   height: 290px;
 }
+
+.audio-control-container {
+  position: absolute;
+  top: 20px; 
+  right: 20px; 
+  margin-top: 90px;
+}
+
+.audio-control-button {
+  background-color: #ff7b0094;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.audio-control-button:hover {
+  background-color: rgba(179, 137, 0, 0.575);
+}
