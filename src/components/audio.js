@@ -1,34 +1,45 @@
-import React, { useEffect } from 'react';
+import React, { useState, useRef } from 'react';
+import backgroundMusicSrc from '../audio/BackgroundMusic.mp3';
 
 const Audiogame = () => {
-  useEffect(() => {
-    const backgroundMusic = new Audio('../audio/BackgroundMusic.mp3');
-    backgroundMusic.loop = true;
+  const [musicPlaying, setMusicPlaying] = useState(false);
+  const audioRef = useRef(null);
 
-    const playMusic = () => {
-      try {
-        backgroundMusic.play();
-      } catch (error) {
-        // Controla los errores en caso de que la reproducción falle
-        console.error('Error al reproducir música de fondo: ', error);
+  const playMusic = () => {
+    try {
+      if (audioRef.current.paused) {
+        audioRef.current.currentTime = 0; // Restablece la posición de reproducción al principio
       }
-    };
+      audioRef.current.play();
+      setMusicPlaying(true);
+    } catch (error) {
+      console.error('Error al reproducir música de fondo: ', error);
+    }
+  };
 
-    playMusic();
+  const pauseMusic = () => {
+    try {
+      audioRef.current.pause();
+      setMusicPlaying(false);
+    } catch (error) {
+      console.error('Error al detener la música de fondo: ', error);
+    }
+  };
 
-    // Maneja la pausa cuando el componente se desmonta
-    return () => {
-      try {
-        backgroundMusic.pause();
-      } catch (error) {
-        // Controla los errores en caso de que la pausa falle
-        console.error('Error al detener la música de fondo: ', error);
-      }
-    };
-  }, []);
-
-  return null; // No necesitas un elemento JSX visible, por lo que puedes devolver null
+  return (
+    <div className="audio-control-container">
+      <audio ref={audioRef} src={backgroundMusicSrc} loop />
+      {musicPlaying ? (
+        <button className="audio-control-button" onClick={pauseMusic}>
+          Pausar Música
+        </button>
+      ) : (
+        <button className="audio-control-button" onClick={playMusic}>
+          Reproducir Música
+        </button>
+      )}
+    </div>
+  );
 };
 
-export { Audiogame };
-
+export default Audiogame;

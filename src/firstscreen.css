@@ -62,3 +62,23 @@ button{
       max-width: 80%; /* Reduce el ancho de la imagen en pantallas más pequeñas */
     }
   }
+
+.audio-control-container {
+    position: absolute;
+    top: 20px; /* Ajusta la posición según tus necesidades */
+    right: 20px; /* Ajusta la posición según tus necesidades */
+  }
+  
+  .audio-control-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .audio-control-button:hover {
+    background-color: #0056b3;
+  }
+  
