@@ -3,16 +3,20 @@ import UserData from '../sessions/data.json'; // JSON del Character
 import Character from '../models/character';
 import Enemy from '../models/enemy';
 import React, { useEffect, useState } from 'react';
-import Message from './message';
 import SessionTime from './sessionTime';
 import RecruitComponent from './RecruitComponent.js';
 import SaveComponent from './saveSessionComponent';
 import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
-import aliado from '../imagenes/aliados/aliado.png';
 import CharacterComponent from './character';
 
 const Layout = ({ children }) => {
+
+  const backgroundImages = [
+    '../imagenes/fondoformulario.gif',
+    '../imagenes/mapleforest02.gif',
+    '../imagenes/fondoformulario.gif',
+  ];
 
   const enemyImages =[
     require('../imagenes/enemy1/mirror.png'),
@@ -38,7 +42,11 @@ const Layout = ({ children }) => {
   const Vida = parseInt(session.Vida);
   const EnemyExp = parseInt(session.EnemyExp);
 
+
   const [enemyImage, setEnemyImage] = useState(null);
+  const [enemiesDefeated, setEnemiesDefeated] = useState(0);
+  const [backgroundImageIndex, setBackgroundImageIndex] = useState(0);
+
 
   const [characterInstance, setCharacterInstance] = useState(
     new Character(  
@@ -60,6 +68,7 @@ const Layout = ({ children }) => {
   const [tempCount, setTempCount] = useState(2);       // Experiencia
 
   // ------------------------------------------------------------------------------ //
+
 
   //FUNCION PARA ATACAR
   const attack = () => {
@@ -96,7 +105,7 @@ const Layout = ({ children }) => {
   const attackDamageSec = (damage) => {
     console.log("Daño que se va a hacer: " + damage);
   
-    // Detener el temporizador anterior si existe
+    // Detener el temporizador anterior si
     if (intervalId) {
       clearInterval(intervalId);
     }
@@ -117,6 +126,9 @@ const Layout = ({ children }) => {
         if (newVida <= 0 || isNaN(newVida)) {
           score();
           spawnNewEnemy();
+        }
+        if ((enemiesDefeated + 1) % 20 === 0) {
+          setBackgroundImageIndex(backgroundImageIndex + 1);
         }
         
         return updatedEnemyInstance;
@@ -229,12 +241,18 @@ const Layout = ({ children }) => {
     // Sumamos el puntaje
     setExpData(expData+enemyInstance.exp);
     setTempCount(tempCount + 1);
+    setEnemiesDefeated(enemiesDefeated + 1);
   }
   const [showImage, setShowImage] = useState(false); // Estado para controlar la visibilidad de la imagen
+  
 
     const handleStart = () => {
         setShowImage(true); // Mostrar la imagen cuando se hace clic en el botón "Comenzar"
     };
+    
+  const changeBackground = () => {
+    setBackgroundImageIndex((backgroundImageIndex + 1) % backgroundImages.length);
+  };
 
 
   return (
@@ -258,16 +276,19 @@ const Layout = ({ children }) => {
               <span id="score"> Experiencia emocional : {expData}</span>
               {children}
             </div>
-            
 
             <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
+            <div className="scoreboard">
+              <span id="enemiesDefeated" className=''> Enemigos derrotados: {enemiesDefeated}</span>
+            </div>
 
             <SessionTime />  {/* tiempo */}
             {children}
         </div>
 
       </div>
-      <div className="game-container">
+      <div
+        className="game-container">
         <CharacterComponent/>
         <div className='enemycontainer'>
           {/* <div className="vidaenemigo">

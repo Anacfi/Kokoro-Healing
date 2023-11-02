@@ -24,7 +24,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 500px; 
+  width: 500px;
 }
 
 .reloj{
@@ -276,7 +276,7 @@
   background-position: center;
   cursor: pointer;
   position: relative;
-  margin-left: 0px; /* Añade margen izquierdo para separar del borde izquierdo */
+  margin-left: 20px; /* Añade margen izquierdo para separar del borde izquierdo */
 }
 
 @media (max-width: 768px) {
@@ -285,7 +285,7 @@
   }
 }
 .pet{
-  position: relative;
+  position: absolute;
   color: #e9e9e9;
   font-family: Daydream;
   background-color: rgb(10, 69, 69);
@@ -302,6 +302,6 @@
   }
 }
 .imagenaliado{
-  width: 230px;
-  height: 230px;
+  width: 290px;
+  height: 290px;
 }
