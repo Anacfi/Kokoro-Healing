@@ -339,6 +339,25 @@
 .audio-control-button:hover {
   background-color: rgba(179, 137, 0, 0.575);
 }
+
+/* Estilos CSS para la barra de vida */
+.barra-vida-container {
+  width: 100%;
+  background-color: #ccc;
+  margin-bottom: 10px;
+}
+
+.barra-vida {
+  height: 20px;
+  width: 100%;
+  background-color: #4CAF50;
+}
+
+.vida-actual {
+  height: 100%;
+  width: 100%;
+  background-color: #f44336; /* Color de la barra de vida */
+}
 @media (max-width: 768px) {
   .audio-control-container {
     position: absolute;
