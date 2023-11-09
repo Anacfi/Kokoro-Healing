@@ -9,17 +9,16 @@ import SaveComponent from './saveSessionComponent';
 import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
 import CharacterComponent from './character';
-import Audiogame from './audio.js'; 
+import Audiogame from './audio.js';
+import Stage1 from '../imagenes/fondoformulario.gif';
+import Stage2 from '../imagenes/mapleforest02.gif';
+
 
 
 
 const Layout = ({ children }) => {
 
-  const backgroundImages = [
-    '../imagenes/fondoformulario.gif',
-    '../imagenes/mapleforest02.gif',
-    '../imagenes/fondoformulario.gif',
-  ];
+  const backgroundImages = [Stage1, Stage2];
 
   const enemyImages =[
     require('../imagenes/enemy1/mirror.png'),
@@ -129,9 +128,9 @@ const Layout = ({ children }) => {
         if (newVida <= 0 || isNaN(newVida)) {
           score();
           spawnNewEnemy();
-        }
-        if ((enemiesDefeated + 1) % 20 === 0) {
-          setBackgroundImageIndex(backgroundImageIndex + 1);
+          if ((enemiesDefeated + 1) % 20 === 0) {
+            setBackgroundImageIndex(backgroundImageIndex + 1);
+          }
         }
         
         return updatedEnemyInstance;
@@ -142,6 +141,7 @@ const Layout = ({ children }) => {
     // Almacenar el nuevo identificador de intervalo en el estado
     setIntervalId(newIntervalId);
   };
+  
   
   // UseEffect para detener el intervalo cuando el componente se desmonta
   useEffect(() => {
@@ -238,6 +238,10 @@ const Layout = ({ children }) => {
     };
 
   // ------------------------------------------------------------------------------ //
+  const changeBackground = () => {
+    setBackgroundImageIndex((backgroundImageIndex + 1) % backgroundImages.length);
+  };
+
 
   // FUNCION PARA EL PUNTAJE
   const score = () => {
@@ -245,6 +249,11 @@ const Layout = ({ children }) => {
     setExpData(expData+enemyInstance.exp);
     setTempCount(tempCount + 1);
     setEnemiesDefeated(enemiesDefeated + 1);
+    if ((enemiesDefeated + 1) % 10 === 0) {
+      changeBackground(); // Cambia el fondo cuando se derrotan 10 enemigos
+    }
+  
+    
   }
   const [showImage, setShowImage] = useState(false); // Estado para controlar la visibilidad de la imagen
   
@@ -252,12 +261,6 @@ const Layout = ({ children }) => {
     const handleStart = () => {
         setShowImage(true); // Mostrar la imagen cuando se hace clic en el botón "Comenzar"
     };
-    
-  const changeBackground = () => {
-    setBackgroundImageIndex((backgroundImageIndex + 1) % backgroundImages.length);
-  };
-
-
   return (
     <div className='container'>
       <div className='estadisticas'>
@@ -291,7 +294,11 @@ const Layout = ({ children }) => {
 
       </div>
       <div
-        className="game-container">
+        className="game-container"
+        style={{
+          backgroundImage: `url(${backgroundImages[backgroundImageIndex]})`,
+        }}
+      >
         <CharacterComponent/>
         <div className='enemycontainer'>
           {/* <div className="vidaenemigo">
