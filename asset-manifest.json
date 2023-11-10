@@ -1,24 +1,36 @@
 {
   "files": {
-    "main.css": "./static/css/main.8be1cf34.css",
-    "main.js": "./static/js/main.c633a150.js",
+    "main.css": "./static/css/main.a87e7efd.css",
+    "main.js": "./static/js/main.591d6d3f.js",
     "static/js/787.8b3fa7a3.chunk.js": "./static/js/787.8b3fa7a3.chunk.js",
+    "static/media/BackgroundMusic.mp3": "./static/media/BackgroundMusic.c828ff5fd3a05e2305ba.mp3",
+    "static/media/nightcamping.gif": "./static/media/nightcamping.68d20775f0ca0681891c.gif",
+    "static/media/Greenforest.gif": "./static/media/Greenforest.a1ca2b64565e8ae44010.gif",
+    "static/media/mapleforest02.gif": "./static/media/mapleforest02.86684c2a146c0a94ba8a.gif",
+    "static/media/waterfall.gif": "./static/media/waterfall.9bcd114447449ba171f1.gif",
     "static/media/mountain-landscape-3840x2160-4k-wallpaper-v0-ez1k6v2m7n8a1.jpg": "./static/media/mountain-landscape-3840x2160-4k-wallpaper-v0-ez1k6v2m7n8a1.5ce3d8370c352e4aa4ba.jpg",
     "static/media/fondoformulario.gif": "./static/media/fondoformulario.1cf9e1e1856935d466b2.gif",
+    "static/media/Icybackground.gif": "./static/media/Icybackground.4ad667bfc6aadf0053aa.gif",
+    "static/media/logo.png": "./static/media/logo.0c5d16bcba0d43cfa435.png",
+    "static/media/nightriver.gif": "./static/media/nightriver.b3b2fadac37f28323976.gif",
+    "static/media/Fountain.gif": "./static/media/Fountain.bd1e07305ecdcd01e718.gif",
     "static/media/ancenstralblue.png": "./static/media/ancenstralblue.4017365cd65f941886c0.png",
+    "static/media/Anotherbackground.gif": "./static/media/Anotherbackground.23e9af4904cb2a0f6941.gif",
     "static/media/CactusOwl.png": "./static/media/CactusOwl.65555fd7ad6b1c5981fa.png",
     "static/media/aliado.png": "./static/media/aliado.e367e0ece8f2908256c2.png",
+    "static/media/iconossonidoon.png": "./static/media/iconossonidoon.96af95c7b96bcb71b547.png",
     "static/media/fondoestadisticas.jpg": "./static/media/fondoestadisticas.60e18b6f17025e5a70b0.jpg",
     "static/media/guardar partida.png": "./static/media/guardar partida.bc66f5b809525447c178.png",
+    "static/media/iconosonidooff.png": "./static/media/iconosonidooff.fa4c6b3434202d353c9c.png",
     "static/media/continuar.png": "./static/media/continuar.65d59a41a5bb5d1340fb.png",
     "static/media/MonsterFriendFore.otf": "./static/media/MonsterFriendFore.47b0bd25cc19235e6e75.otf",
     "index.html": "./index.html",
-    "main.8be1cf34.css.map": "./static/css/main.8be1cf34.css.map",
-    "main.c633a150.js.map": "./static/js/main.c633a150.js.map",
+    "main.a87e7efd.css.map": "./static/css/main.a87e7efd.css.map",
+    "main.591d6d3f.js.map": "./static/js/main.591d6d3f.js.map",
     "787.8b3fa7a3.chunk.js.map": "./static/js/787.8b3fa7a3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8be1cf34.css",
-    "static/js/main.c633a150.js"
+    "static/css/main.a87e7efd.css",
+    "static/js/main.591d6d3f.js"
   ]
 }
