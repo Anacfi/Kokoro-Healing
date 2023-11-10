@@ -14,7 +14,7 @@ class Formulario extends Component {
       sentimiento: '',
       coins: 0,
       enemyExp: 5,
-      fuerza: 10, 
+      fuerza: 10, //Daño base
       userExp: 0,
       vida: 10,
       mostrarPrimerFormulario: true, // Mostrar el primer formulario inicialmente

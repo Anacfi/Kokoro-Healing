@@ -3,13 +3,17 @@ import '../styles/stylesPP.css'
 
 const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, expData}) => {
   const [recruits, setRecruits] = useState(0);
-  const [countrecruitDamageSec, setCountRecruitDamageSec] = useState(1);
-  const [cost, setCost] = useState(2);
+  const [countrecruitDamageSec, setCountRecruitDamageSec] = useState(5); //Daño por segundo base
+  const [costDamage, setCostDamage] = useState(2); 
+  const [costExp, setCostExp] = useState(2); 
+  const [costDps, setCostDps] = useState(2); 
+ 
+
   const [mostrarMensajeError, setMostrarMensajeError] = useState(false);
 
   const handleRecruitDamageClick = () => {
 
-    if (expData< cost) {
+    if (expData< costDamage) {
       setMostrarMensajeError(true);
 
       setTimeout(() => {
@@ -18,9 +22,9 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
 
 
     } else {
-      const newExp = expCost(); 
+      const newExp = (expData - costDamage)
       // Incrementa el costo del recluta
-      setCost(cost + 2);
+      setCostDamage(costDamage + 2);//Coste Acumulado
 
       // Incrementa el contador de reclutas
       setRecruits(recruits + 1);
@@ -33,7 +37,7 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
   };
 
   const handleRecruitExpClick = () => {
-    if (expData < cost) {
+    if (expData < costExp) {
       setMostrarMensajeError(true);
 
       setTimeout(() => {
@@ -42,9 +46,9 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
 
 
     } else {
-      const newExp = expCost(); 
+      const newExp = (expData - costExp)
       // Incrementa el costo del recluta
-      setCost(cost + 2);
+      setCostExp(costExp + 1);
 
       // Incrementa el contador de reclutas
       setRecruits(recruits + 1);
@@ -57,7 +61,7 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
   };
 
   const handleRecruitDamageSecClick = () => {
-    if (expData < cost) {
+    if (expData < costDps) {
       setMostrarMensajeError(true);
 
       setTimeout(() => {
@@ -66,11 +70,11 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
 
 
     } else {
-      setCountRecruitDamageSec(countrecruitDamageSec + 1);
+      setCountRecruitDamageSec(countrecruitDamageSec + 3);//DPS por comprar cada aumento
 
-      const newExp = expCost(); 
+      const newExp = (expData - costDps); 
       // Incrementa el costo del recluta
-      setCost(cost + 2);
+      setCostDps(costDps + 2);
 
       // Incrementa el contador de reclutas
       setRecruits(recruits + 1);
@@ -82,11 +86,6 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
     };
 
   };
-
-  const expCost = () => {
-    const newExp = (expData - cost)
-    return newExp;
-  } 
 
   return (
     <div className='recruit'>

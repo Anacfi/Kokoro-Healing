@@ -10,15 +10,22 @@ import '../styles/stylesPP.css'
 import logo from '../imagenes/logo.png'; 
 import CharacterComponent from './character';
 import Audiogame from './audio.js';
-import Stage1 from '../imagenes/fondoformulario.gif';
-import Stage2 from '../imagenes/mapleforest02.gif';
+import Stage1 from '../imagenes/mapleforest02.gif';
+import Stage2 from '../imagenes/Anotherbackground.gif';
+import Stage3 from '../imagenes/waterfall.gif';
+import Stage4 from '../imagenes/Fountain.gif';
+import Stage5 from '../imagenes/fondoformulario.gif';
+import Stage6 from '../imagenes/nightcamping.gif';
+import Stage7 from '../imagenes/nightriver.gif';
+import Stage8 from '../imagenes/Greenforest.gif';
+import Stage9 from '../imagenes/Icybackground.gif';
 
 
 
 
 const Layout = ({ children }) => {
 
-  const backgroundImages = [Stage1, Stage2];
+  const backgroundImages = [Stage1, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7, Stage8, Stage9];
 
   const enemyImages =[
     require('../imagenes/enemy1/mirror.png'),
@@ -293,10 +300,10 @@ const Layout = ({ children }) => {
           <div className="barra-vida">
           <div
           className="vida-actual"
-         style={{
-         width: `${(enemyInstance.vida / Vida) * 100}%`,
-         maxWidth: '100%', // Establece un ancho máximo del 100%
-         }}
+          style={{
+            width: `${(enemyInstance.vida / (10 * tempCount)) * 100}%`,
+            maxWidth: '100%',
+          }}
        ></div>
           </div>
         </div>

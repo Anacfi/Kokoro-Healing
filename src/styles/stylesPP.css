@@ -350,13 +350,13 @@
 .barra-vida {
   height: 20px;
   width: 100%;
-  background-color: #4CAF50;
+  background-color: #3f5e25;
 }
 
 .vida-actual {
   height: 100%;
   width: 100%;
-  background-color: #f44336; /* Color de la barra de vida */
+  background-color: #74a745; /* Color de la barra de vida */
 }
 @media (max-width: 768px) {
   .audio-control-container {
