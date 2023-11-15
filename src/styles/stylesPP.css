@@ -251,20 +251,19 @@
 }
 /* ----------------------------------------------------------------------------------------------- */
 /*  */
-.card {
+.cards-container {
   display: flex;
-  display: inline-block;
-  border: 5px solid #133836;
-  padding: 50px;
-  margin: 10px;
-  cursor: pointer;
-  background-color: rgb(197, 168, 73); /* Color de fondo predeterminado */
-  color: rgb(14, 88, 109); /* Color de texto predeterminado */
+  justify-content: space-around; /* Alinea las tarjetas con espacio alrededor */
 }
-/* Estilo adicional para tarjetas con hover (cuando el mouse pasa por encima) */
+.card {
+  background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    color: transparent;
+    width: 100px;
+}
 .card:hover {
-  background-color: #a3d871; /* Cambia el color de fondo al pasar el mouse por encima */
-  border: 5px solid #174d63; /* Cambia el borde al pasar el mouse por encima */
+  padding-top: 2px;
 }
 
 /* --------------------------------------------------------------------------------------- */
@@ -384,3 +383,11 @@
   }
 }
 
+.imagenSeleccionada {
+  max-width: 200px; /* Ancho máximo */
+  max-height: 200px; /* Altura máxima */
+  border: 2px solid #333; /* Borde */
+  border-radius: 5px; /* Borde redondeado */
+  margin-top: 10px; /* Margen superior */
+  /* Otros estilos que desees aplicar */
+}

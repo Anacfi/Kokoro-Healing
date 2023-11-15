@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/stylesPP.css'
+import perro from "../imagenes/aliados/perro.png";
+import gato from "../imagenes/aliados/gato.png";
+import ave from "../imagenes/aliados/ave.png";
+import CharacterComponent from './character';
 
 class Formulario extends Component {
   constructor(props) {
@@ -20,6 +24,7 @@ class Formulario extends Component {
       mostrarPrimerFormulario: true, // Mostrar el primer formulario inicialmente
       jugarHabilitado: false,
       cardSeleccionada: null,
+      imagenSeleccionada: null,
     };
   }
 
@@ -63,23 +68,32 @@ class Formulario extends Component {
     this.setState({ jugarHabilitado: true });
   }
   handleCardSeleccionada = (card) => {
+    console.log('Tarjeta seleccionada:', card);
     if (this.state.cardSeleccionada === card) {
-      this.setState({ cardSeleccionada: null });
+      this.setState({ cardSeleccionada: null, imagenSeleccionada: null });
       localStorage.removeItem('cardSeleccionada');
     } else {
-      this.setState({ cardSeleccionada: card });
+      this.setState({ cardSeleccionada: card, imagenSeleccionada: card.image });
       localStorage.setItem('cardSeleccionada', JSON.stringify(card));
+      debugger; // Esto detendrá la ejecución del código aquí para que puedas inspeccionar el estado actual
     }
   }
+  handleImageSelected = (imagenSeleccionada) => {
+    this.setState({ imagenSeleccionada, showImage: true }); // Actualiza el estado showImage
+  };
+  
 
+  
 
   render() {
     const cards = [
-      { id: 1, name: 'Perro' },
-      { id: 2, name: 'Gato' },
-      { id: 3, name: 'Ave' },
+      { id: 1, name: 'Perro', image: perro },
+      { id: 2, name: 'Gato', image: gato },
+      { id: 3, name: 'Ave', image: ave},
     ];
+
     console.log(this.handleCardSeleccionada)
+    
     return (
       <>
       <div className='fondoform'>
@@ -129,22 +143,41 @@ class Formulario extends Component {
 
                 <h2>Selecciona una mascota:</h2>
                 <div className="cards-container">
+                  
                   {cards.map((card) => (
-                    <div
-                      key={card.id}
-                      className={`card ${this.state.cardSeleccionada === card ? 'selected' : ''}`}
-                      onClick={() => this.handleCardSeleccionada(card)}
-                    >
-                      {card.name}
-                    </div>
+                     <Link to="/game" key={card.id}>
+                      <div
+                        key={card.id}
+                        className={`card ${this.state.cardSeleccionada === card ? 'selected' : ''}`}
+                        onClick={() => this.handleCardSeleccionada(card)}
+                      >
+                        {/* Aplicar estilos de ancho y alto a la imagen del perro */}
+                        {card.name === 'Perro' && (
+                          <img src={card.image} alt={card.name} style={{ width: '100px', height: '100px' }} />
+                          // Cambia los valores de width y height según tu preferencia
+                        )}
+                        {card.name === 'Gato' && (
+                          <img src={card.image} alt={card.name} style={{ width: '100px', height: '100px' }}/>
+                        )}
+                        {card.name === 'Ave' && (
+                          <img src={card.image} alt={card.name} style={{ width: '100px', height: '100px' }}/>
+                        )}
+                        {card.name}
+                      </div>
+                    </Link>
                   ))}
+                  
                 </div>
               </form>
+              
+          )}
+          {!this.state.mostrarPrimerFormulario && !this.state.jugarHabilitado && (
+            <CharacterComponent
+              cardSeleccionada={localStorage.getItem('cardSeleccionada') ? JSON.parse(localStorage.getItem('cardSeleccionada')) : null}
+              onImageSelected={this.handleImageSelected}
+            />
           )}
 
-          {this.state.jugarHabilitado && (
-            <Link to="/game"><button onClick={this.iniciarJuego}>Jugar</button></Link>
-          )}
         </div>
       </div>
       </>
