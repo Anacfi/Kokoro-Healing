@@ -1,9 +1,9 @@
 import React, { Component ,useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/stylesPP.css'
-import perro from "../imagenes/aliados/perro.png";
-import gato from "../imagenes/aliados/gato.png";
-import ave from "../imagenes/aliados/ave.png";
+import perro from "../imagenes/aliados/WalkingDoggo.gif";
+import gato from "../imagenes/aliados/KittyCat.gif";
+import zorro from "../imagenes/aliados/PartyFox.gif";
 import CharacterComponent from './character';
 
 class Formulario extends Component {
@@ -89,7 +89,7 @@ class Formulario extends Component {
     const cards = [
       { id: 1, name: 'Perro', image: perro },
       { id: 2, name: 'Gato', image: gato },
-      { id: 3, name: 'Ave', image: ave},
+      { id: 3, name: 'Zorro', image: zorro},
     ];
 
     console.log(this.handleCardSeleccionada)
@@ -153,14 +153,14 @@ class Formulario extends Component {
                       >
                         {/* Aplicar estilos de ancho y alto a la imagen del perro */}
                         {card.name === 'Perro' && (
-                          <img src={card.image} alt={card.name} style={{ width: '100px', height: '100px' }} />
+                          <img src={card.image} alt={card.name} style={{ width: '400px', height: '300px' }} />
                           // Cambia los valores de width y height según tu preferencia
                         )}
                         {card.name === 'Gato' && (
-                          <img src={card.image} alt={card.name} style={{ width: '100px', height: '100px' }}/>
+                          <img src={card.image} alt={card.name} style={{ width: '600px', height: '400px' }}/>
                         )}
-                        {card.name === 'Ave' && (
-                          <img src={card.image} alt={card.name} style={{ width: '100px', height: '100px' }}/>
+                        {card.name === 'Zorro' && (
+                          <img src={card.image} alt={card.name} style={{ width: '400px', height: '400px' }}/>
                         )}
                         {card.name}
                       </div>
