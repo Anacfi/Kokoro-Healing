@@ -269,8 +269,8 @@
 /* --------------------------------------------------------------------------------------- */
 .character {
   position: absolute;
-  width: 230px;
-  height: 230px;
+  width: 200px;
+  height: 200px;
   background-size: cover;
   background-position: center;
   cursor: pointer;
@@ -301,8 +301,8 @@
   }
 }
 .imagenaliado{
-  width: 290px;
-  height: 290px;
+  width: 280px;
+  height: 280px;
 }
 
 .audio-control-container {
@@ -390,4 +390,9 @@
   border-radius: 5px; /* Borde redondeado */
   margin-top: 10px; /* Margen superior */
   /* Otros estilos que desees aplicar */
+}
+.imagenheadaliado{
+  position: absolute;
+  top: 42px;
+  left: 40px;
 }

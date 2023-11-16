@@ -35,11 +35,13 @@ const CharacterComponent = ({ cardSeleccionada, onImageSelected }) => {
     <>
       <div className="character" onClick={toggleMessages}>
         <img className='imagenaliado' src={aliado1} alt="Aliado 1" onClick={handleImageClick} />
+        <div className='imagenheadaliado'>
           <img
-            style={{ maxWidth: '200px', maxHeight: '200px' }} // Estilos básicos para verificar la visualización
-            src={imagen}
-            alt="Imagen Seleccionada"
-          />
+              style={{ maxWidth: '500px', maxHeight: '500px', borderRadius:'100px'}} // Estilos básicos para verificar la visualización
+              src={imagen}
+              alt="Imagen Seleccionada"
+            />
+        </div>
         {cardSeleccionada && (
           <img className='imagenSeleccionada' src={cardSeleccionada} alt="Imagen Seleccionada" />
         )}

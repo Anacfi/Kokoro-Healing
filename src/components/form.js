@@ -6,6 +6,10 @@ import gato from "../imagenes/aliados/KittyCat.gif";
 import zorro from "../imagenes/aliados/PartyFox.gif";
 import CharacterComponent from './character';
 
+import perrohead from "../imagenes/aliados/Doggoface.gif";
+import gatohead from "../imagenes/aliados/catface.gif";
+import zorrohead from "../imagenes/aliados/foxface.gif";
+
 class Formulario extends Component {
   constructor(props) {
     super(props);
@@ -74,15 +78,15 @@ class Formulario extends Component {
     } else {
       this.setState({ cardSeleccionada: card, imagenSeleccionada: card.image });
       if (card.id === 1){
-        const infoCard = {'id': card.id, 'image': perro, 'name': 'Perro'}
+        const infoCard = {'id': card.id, 'image': perrohead, 'name': 'Perro'}
         console.log(infoCard);
         localStorage.setItem('cardSeleccionada', JSON.stringify(infoCard));
       }else if (card.id === 2){
-        const infoCard = {'id': card.id, 'image': gato, 'name': 'Gato'}
+        const infoCard = {'id': card.id, 'image': gatohead, 'name': 'Gato'}
         localStorage.setItem('cardSeleccionada', JSON.stringify(infoCard));
 
       }else if (card.id === 3){
-        const infoCard = {'id': card.id, 'image': zorro, 'name': 'Gato'}
+        const infoCard = {'id': card.id, 'image': zorrohead, 'name': 'Gato'}
         localStorage.setItem('cardSeleccionada', JSON.stringify(infoCard));
       }
       //debugger; // Esto detendrá la ejecución del código aquí para que puedas inspeccionar el estado actual
