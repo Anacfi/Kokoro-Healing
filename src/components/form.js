@@ -153,16 +153,23 @@ class Formulario extends Component {
                       >
                         {/* Aplicar estilos de ancho y alto a la imagen del perro */}
                         {card.name === 'Perro' && (
-                          <img src={card.image} alt={card.name} style={{ width: '300px', height: '300px' }} />
+                          <img src={card.image} alt={card.name} style={{ width: '200px', height: '200px' }} />
                           // Cambia los valores de width y height según tu preferencia
                         )}
                         {card.name === 'Gato' && (
-                          <img src={card.image} alt={card.name} style={{ width: '300px', height: '300px' }}/>
+                          <img src={card.image} alt={card.name} style={{ width: '200px', height: '200px' }}/>
                         )}
                         {card.name === 'Zorro' && (
-                          <img src={card.image} alt={card.name} style={{ width: '300px', height: '300px' }}/>
+                          <img src={card.image} alt={card.name} style={{ width: '200px', height: '200px' }}/>
                         )}
                         {card.name}
+                        {!this.state.mostrarPrimerFormulario && !this.state.jugarHabilitado && (
+                          <CharacterComponent
+                            cardSeleccionada={card.image}
+                            onImageSelected={this.handleImageSelected}
+                          />
+                        )}
+                        
                       </div>
                     </Link>
                   ))}
@@ -170,12 +177,6 @@ class Formulario extends Component {
                 </div>
               </form>
               
-          )}
-          {!this.state.mostrarPrimerFormulario && !this.state.jugarHabilitado && (
-            <CharacterComponent
-              cardSeleccionada={localStorage.getItem('cardSeleccionada') ? JSON.parse(localStorage.getItem('cardSeleccionada')) : null}
-              onImageSelected={this.handleImageSelected}
-            />
           )}
 
         </div>
