@@ -20,7 +20,7 @@ import Stage7 from '../imagenes/nightriver.gif';
 import Stage8 from '../imagenes/Greenforest.gif';
 import Stage9 from '../imagenes/Icybackground.gif';
 
-
+import Tutorial from './tutorial.js';
 
 
 const Layout = ({ children }) => {
@@ -76,6 +76,7 @@ const Layout = ({ children }) => {
   const [expData, setExpData] = useState(UserExp);       // Experiencia
   const [tempCount, setTempCount] = useState(2);       // Experiencia
 
+  const [tutoIsOpen, setTutoIsOpen] = useState(false); // Tutorial
   // ------------------------------------------------------------------------------ //
 
 
@@ -268,6 +269,8 @@ const Layout = ({ children }) => {
     const handleStart = () => {
         setShowImage(true); // Mostrar la imagen cuando se hace clic en el botón "Comenzar"
     };
+
+
   return (
     <div className='container'>
       <div className='estadisticas'>
@@ -279,6 +282,10 @@ const Layout = ({ children }) => {
               </a>
           </h1>
           <p className='bienvenidaPlayer'>bienvenido {localStorage.getItem('User')}</p>
+          <button onClick={() => setTutoIsOpen(true)}>Tutorial</button>
+          <Tutorial flag={tutoIsOpen} onClose={() => setTutoIsOpen(false)}>
+ 
+          </Tutorial>
           <div className='reloj' id="reloj"></div>
           </header>
               

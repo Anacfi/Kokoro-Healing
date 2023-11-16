@@ -13,7 +13,6 @@ class Character  {
 
   }
   
-
   incrementAttack(character){
 
     let setCharacter = (character.fuerza + 2); //Aumento de daño por cada mejora
@@ -26,7 +25,6 @@ class Character  {
     let setEnemigo = (enemigo.vida) - (damagesec);
     
     return setEnemigo;
-    
   }; 
 } 
 

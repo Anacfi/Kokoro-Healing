@@ -44,8 +44,6 @@ class Formulario extends Component {
       localStorage.setItem('UserExp', this.state.userExp);
       localStorage.setItem('Vida', this.state.vida);
 
-      this.setState({ jugarHabilitado: true });
-
       this.setState({
         user: '',
         nombre: '',
@@ -56,6 +54,7 @@ class Formulario extends Component {
       });
       this.setState({ mostrarPrimerFormulario: false });
       
+      this.setState({jugarHabilitado: true})
 
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
@@ -74,17 +73,25 @@ class Formulario extends Component {
       localStorage.removeItem('cardSeleccionada');
     } else {
       this.setState({ cardSeleccionada: card, imagenSeleccionada: card.image });
-      localStorage.setItem('cardSeleccionada', JSON.stringify(card));
-      debugger; // Esto detendrá la ejecución del código aquí para que puedas inspeccionar el estado actual
+      if (card.id === 1){
+        const infoCard = {'id': card.id, 'image': perro, 'name': 'Perro'}
+        console.log(infoCard);
+        localStorage.setItem('cardSeleccionada', JSON.stringify(infoCard));
+      }else if (card.id === 2){
+        const infoCard = {'id': card.id, 'image': gato, 'name': 'Gato'}
+        localStorage.setItem('cardSeleccionada', JSON.stringify(infoCard));
+
+      }else if (card.id === 3){
+        const infoCard = {'id': card.id, 'image': zorro, 'name': 'Gato'}
+        localStorage.setItem('cardSeleccionada', JSON.stringify(infoCard));
+      }
+      //debugger; // Esto detendrá la ejecución del código aquí para que puedas inspeccionar el estado actual
     }
   }
   handleImageSelected = (imagenSeleccionada) => {
     this.setState({ imagenSeleccionada, showImage: true }); // Actualiza el estado showImage
   };
   
-
-  
-
   render() {
     const cards = [
       { id: 1, name: 'Perro', image: perro },

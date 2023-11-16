@@ -19,6 +19,18 @@ const SaveComponent = ({ UserData, EnemyData, CharacterData, expData }) => {
     newDataSession.Enemy.Vida = EnemyData.vida;
     newDataSession.Enemy.exp = EnemyData.exp; 
 
+    // Obtener el valor de "cardSeleccionada" desde el localStorage
+    const cardSeleccionadaString = localStorage.getItem("cardSeleccionada");
+
+    // Convertir el string obtenido en un objeto JavaScript
+    const cardSeleccionadaObjeto = JSON.parse(cardSeleccionadaString);
+
+    // Acceder a la propiedad "image" del objeto
+    const id = cardSeleccionadaObjeto.id;
+    const nombre = cardSeleccionadaObjeto.name;
+
+    newDataSession.Companion.Id = id;
+    newDataSession.Companion.Nombre = nombre;
     // Convertir el objeto clonado a JSON
     const jsonData = JSON.stringify(newDataSession, null, 2);
 

@@ -14,24 +14,32 @@ const CharacterComponent = ({ cardSeleccionada, onImageSelected }) => {
 
   const handleImageClick = () => {
     if (cardSeleccionada && onImageSelected) {
-      console.log('Valor de imagenSeleccionada:', cardSeleccionada.image);
+      //console.log('Valor de imagenSeleccionada:', cardSeleccionada.image);
       onImageSelected(cardSeleccionada.image);
       console.log('handleImageSelected se ha llamado con éxito');
     }
   };
 
-  console.log('Valor de imagenSeleccionada:', cardSeleccionada);
+
+  // Obtener el valor de "cardSeleccionada" desde el localStorage
+  const cardSeleccionadaString = localStorage.getItem("cardSeleccionada");
+
+  // Convertir el string obtenido en un objeto JavaScript
+  const cardSeleccionadaObjeto = JSON.parse(cardSeleccionadaString);
+
+  // Acceder a la propiedad "image" del objeto
+  const imagen = cardSeleccionadaObjeto.image;
+
+  console.log(imagen);
   return (
     <>
       <div className="character" onClick={toggleMessages}>
         <img className='imagenaliado' src={aliado1} alt="Aliado 1" onClick={handleImageClick} />
-        {cardSeleccionada && (
           <img
             style={{ maxWidth: '200px', maxHeight: '200px' }} // Estilos básicos para verificar la visualización
-            src={cardSeleccionada}
+            src={imagen}
             alt="Imagen Seleccionada"
           />
-        )}
         {cardSeleccionada && (
           <img className='imagenSeleccionada' src={cardSeleccionada} alt="Imagen Seleccionada" />
         )}
