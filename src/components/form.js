@@ -153,14 +153,14 @@ class Formulario extends Component {
                       >
                         {/* Aplicar estilos de ancho y alto a la imagen del perro */}
                         {card.name === 'Perro' && (
-                          <img src={card.image} alt={card.name} style={{ width: '400px', height: '300px' }} />
+                          <img src={card.image} alt={card.name} style={{ width: '300px', height: '300px' }} />
                           // Cambia los valores de width y height según tu preferencia
                         )}
                         {card.name === 'Gato' && (
-                          <img src={card.image} alt={card.name} style={{ width: '600px', height: '400px' }}/>
+                          <img src={card.image} alt={card.name} style={{ width: '300px', height: '300px' }}/>
                         )}
                         {card.name === 'Zorro' && (
-                          <img src={card.image} alt={card.name} style={{ width: '400px', height: '400px' }}/>
+                          <img src={card.image} alt={card.name} style={{ width: '300px', height: '300px' }}/>
                         )}
                         {card.name}
                       </div>
