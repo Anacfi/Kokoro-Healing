@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "./static/css/main.de007533.css",
-    "main.js": "./static/js/main.0bbcd9b5.js",
+    "main.css": "./static/css/main.bebbc7cd.css",
+    "main.js": "./static/js/main.caaa5da8.js",
     "static/js/787.8b3fa7a3.chunk.js": "./static/js/787.8b3fa7a3.chunk.js",
     "static/media/BackgroundMusic.mp3": "./static/media/BackgroundMusic.c828ff5fd3a05e2305ba.mp3",
     "static/media/nightcamping.gif": "./static/media/nightcamping.68d20775f0ca0681891c.gif",
@@ -19,6 +19,7 @@
     "static/media/Fountain.gif": "./static/media/Fountain.bd1e07305ecdcd01e718.gif",
     "static/media/KittyCat.gif": "./static/media/KittyCat.f1252db11de987704b9b.gif",
     "static/media/catface.gif": "./static/media/catface.fb49880b0628459553aa.gif",
+    "static/media/Companions.gif": "./static/media/Companions.bf0cc6e49dddde97ea0a.gif",
     "static/media/RealPinkGuy.gif": "./static/media/RealPinkGuy.4f237c948e1616f92cb9.gif",
     "static/media/Anotherbackground.gif": "./static/media/Anotherbackground.23e9af4904cb2a0f6941.gif",
     "static/media/PlasmaEnemy.gif": "./static/media/PlasmaEnemy.ff32c0d58b0ddf7f658c.gif",
@@ -39,12 +40,12 @@
     "static/media/continuar.png": "./static/media/continuar.65d59a41a5bb5d1340fb.png",
     "static/media/MonsterFriendFore.otf": "./static/media/MonsterFriendFore.47b0bd25cc19235e6e75.otf",
     "index.html": "./index.html",
-    "main.de007533.css.map": "./static/css/main.de007533.css.map",
-    "main.0bbcd9b5.js.map": "./static/js/main.0bbcd9b5.js.map",
+    "main.bebbc7cd.css.map": "./static/css/main.bebbc7cd.css.map",
+    "main.caaa5da8.js.map": "./static/js/main.caaa5da8.js.map",
     "787.8b3fa7a3.chunk.js.map": "./static/js/787.8b3fa7a3.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.de007533.css",
-    "static/js/main.0bbcd9b5.js"
+    "static/css/main.bebbc7cd.css",
+    "static/js/main.caaa5da8.js"
   ]
 }
