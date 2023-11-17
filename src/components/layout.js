@@ -19,6 +19,7 @@ import Stage6 from '../imagenes/nightcamping.gif';
 import Stage7 from '../imagenes/nightriver.gif';
 import Stage8 from '../imagenes/Greenforest.gif';
 import Stage9 from '../imagenes/Icybackground.gif';
+import CompanionsGif from '../imagenes/aliados/Companions.gif';
 
 import Tutorial from './tutorial.js';
 
@@ -262,7 +263,8 @@ const Layout = ({ children }) => {
               </a>
           </h1>
           <p className='bienvenidaPlayer'>bienvenido {localStorage.getItem('User')}</p>
-          <button onClick={() => setTutoIsOpen(true)}>Tutorial</button>
+
+          <button className='tutorialButton' onClick={() => setTutoIsOpen(true)}>Tutorial</button>
           <Tutorial flag={tutoIsOpen} onClose={() => setTutoIsOpen(false)}>
  
           </Tutorial>
@@ -270,18 +272,22 @@ const Layout = ({ children }) => {
           </header>
               
             <div id="reloj"></div>
-            <span id="enemyHealth" className='spanenemy'> Resistencia Emocional: {enemyInstance.vida}</span>
+            <span id="enemyHealth" className='spanenemy'> Resistencia: {enemyInstance.vida}</span>
             
             
             <div className="scoreboard">
               <span id="score"> Experiencia emocional : {expData}</span>
               {children}
             </div>
-
-            <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
             <div className="scoreboard">
               <span id="enemiesDefeated" className=''> Enemigos derrotados: {enemiesDefeated}</span>
             </div>
+
+            <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
+            <div className="gif-container">
+            <img src={CompanionsGif} alt="Companions" className="gif-component" />
+            </div>
+            
 
             <div className="barra-vida-container">
           <div className="barra-vida">

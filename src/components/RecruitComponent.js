@@ -3,7 +3,7 @@ import '../styles/stylesPP.css'
 
 const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, expData}) => {
   const [recruits, setRecruits] = useState(0);
-  const [countrecruitDamageSec, setCountRecruitDamageSec] = useState(5); //Daño por segundo base
+  const [countrecruitDamageSec, setCountRecruitDamageSec] = useState(1); //Daño por segundo base
   const [costDamage, setCostDamage] = useState(2); 
   const [costExp, setCostExp] = useState(2); 
   const [costDps, setCostDps] = useState(2); 
@@ -24,7 +24,7 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
     } else {
       const newExp = (expData - costDamage)
       // Incrementa el costo del recluta
-      setCostDamage(costDamage + 2);//Coste Acumulado
+      setCostDamage(costDamage + 3);//Coste Acumulado
 
       // Incrementa el contador de reclutas
       setRecruits(recruits + 1);
@@ -77,6 +77,7 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
       setCostDps(costDps + 2);
 
       // Incrementa el contador de reclutas
+      setRecruits(recruits + 1);
 
       // Llama a la función de reclutamiento pasada como prop
       if (onRecruitDamageSec) {
