@@ -28,9 +28,16 @@ const Layout = ({ children }) => {
   const backgroundImages = [Stage1, Stage2, Stage3, Stage4, Stage5, Stage6, Stage7, Stage8, Stage9];
 
   const enemyImages =[
-    require('../imagenes/enemy1/mirror.png'),
-    require('../imagenes/enemy1/CactusOwl.png'),
-    require('../imagenes/enemy1/ancenstralblue.png'),
+    require('../imagenes/enemy1/Bat.gif'),
+    require('../imagenes/enemy1/Tanuki.gif'),
+    require('../imagenes/enemy1/JumpingSkull.gif'),
+    require('../imagenes/enemy1/GlobeFish.gif'),
+    require('../imagenes/enemy1/CandleEnemy.gif'),
+    require('../imagenes/enemy1/MoaiEnemy.gif'),
+    require('../imagenes/enemy1/PlasmaEnemy.gif'),
+    require('../imagenes/enemy1/BirdEnemy.gif'),
+    require('../imagenes/enemy1/ExplorerEnemy.gif'),
+    require('../imagenes/enemy1/RealPinkGuy.gif')
   ];
 
   const aliados = [
