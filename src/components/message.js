@@ -13,7 +13,7 @@ const Message = () => {
   ); // Crear una instancia de la clase Enemigo
 
   useEffect(() => {
-    const message = "me cago, me meo, me tiro un peo" 
+    const message = "Bienvenido!" 
     document.getElementById('pet-message').textContent = message;
     // Función que se ejecuta después de un tiempo aleatorio
     function executeAfterRandomTime() {

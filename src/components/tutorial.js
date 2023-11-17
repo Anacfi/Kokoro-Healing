@@ -32,7 +32,7 @@ function Tutorial({ children, flag , onClose}) {
     }   
 
     if (nTuto === 1) {
-      setInstruction('Hola esta es la instruccion 1');
+      setInstruction('Bienvenido a Kokoro Healing, este es nuestro tutorial');
     }
 
     if (nTuto === 2) {
