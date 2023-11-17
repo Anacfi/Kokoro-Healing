@@ -13,11 +13,12 @@ const Message = () => {
   ); // Crear una instancia de la clase Enemigo
 
   useEffect(() => {
+    const message = "me cago, me meo, me tiro un peo" 
+    document.getElementById('pet-message').textContent = message;
     // Función que se ejecuta después de un tiempo aleatorio
     function executeAfterRandomTime() {
       // Genera un número aleatorio entre 1 y 10 para el tiempo de espera en segundos
       const randomSeconds = Math.floor(Math.random() * 10) + 1;
-  
   
       setTimeout(() => {
         const message = companionInstace.mensajito();
