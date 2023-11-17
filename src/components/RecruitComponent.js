@@ -77,7 +77,6 @@ const RecruitComponent = ({ onRecruitExp, onRecruitDamage, onRecruitDamageSec, e
       setCostDps(costDps + 2);
 
       // Incrementa el contador de reclutas
-      setRecruits(recruits + 1);
 
       // Llama a la función de reclutamiento pasada como prop
       if (onRecruitDamageSec) {
