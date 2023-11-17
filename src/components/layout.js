@@ -40,12 +40,6 @@ const Layout = ({ children }) => {
     require('../imagenes/enemy1/RealPinkGuy.gif')
   ];
 
-  const aliados = [
-    { nombre: 'pajaro', imagen: '../imagenes/aliados/aliado.png' },
-    { nombre: 'perro', imagen: 'ruta-aliado2.png' },
-    { nombre: 'gato', imagen: 'ruta-aliado3.png' },
-  ];
-
   const session = {
     'UserExp': localStorage.getItem('UserExp'),
     'Fuerza': localStorage.getItem('Fuerza'),
@@ -58,11 +52,10 @@ const Layout = ({ children }) => {
   const Vida = parseInt(session.Vida);
   const EnemyExp = parseInt(session.EnemyExp);
 
-
   const [enemyImage, setEnemyImage] = useState(null);
   const [enemiesDefeated, setEnemiesDefeated] = useState(0);
+  const [enemiesDefeatedBySec, setEnemiesDefeatedBySec] = useState(0);
   const [backgroundImageIndex, setBackgroundImageIndex] = useState(0);
-
 
   const [characterInstance, setCharacterInstance] = useState(
     new Character(  
@@ -81,12 +74,9 @@ const Layout = ({ children }) => {
   ); // Crear una instancia de la clase Enemigo
   
   const [expData, setExpData] = useState(UserExp);       // Experiencia
-  const [tempCount, setTempCount] = useState(2);       // Experiencia
-
+  const [tempCount, setTempCount] = useState(2);        // Experiencia
   const [tutoIsOpen, setTutoIsOpen] = useState(false); // Tutorial
   // ------------------------------------------------------------------------------ //
-
-
   //FUNCION PARA ATACAR
   const attack = () => {
 
@@ -110,23 +100,20 @@ const Layout = ({ children }) => {
     // Comprobar si el enemigo ha sido derrotado
     if (newVida <= 0 || isNaN(newVida)) {
         score();
+        setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated );
         spawnNewEnemy();
     }
   };
-
   // ------------------------------------------------------------------------------ //
-  
   const [intervalId, setIntervalId] = useState(null);
 
   //FUNCION PARA ATACAR POR SEGUNDO
   const attackDamageSec = (damage) => {
     console.log("Daño que se va a hacer: " + damage);
-  
     // Detener el temporizador anterior si
     if (intervalId) {
       clearInterval(intervalId);
     }
-  
     // Crear un nuevo intervalo y almacenar su identificador
     const newIntervalId = setInterval(() => {
       console.log("Intervalo: " + newIntervalId);
@@ -143,9 +130,14 @@ const Layout = ({ children }) => {
         if (newVida <= 0 || isNaN(newVida)) {
           score();
           spawnNewEnemy();
-          if ((enemiesDefeated + 1) % 20 === 0) {
-            setBackgroundImageIndex(backgroundImageIndex + 1);
-          }
+          setEnemiesDefeated(prevEnemiesDefeated => prevEnemiesDefeated );
+          return new Enemy(
+            prevEnemyInstance.nombre,
+            10 * tempCount,  // Reiniciar vida del enemigo
+            prevEnemyInstance.defensa,
+            prevEnemyInstance.exp
+          );
+          
         }
         
         return updatedEnemyInstance;
@@ -156,8 +148,7 @@ const Layout = ({ children }) => {
     // Almacenar el nuevo identificador de intervalo en el estado
     setIntervalId(newIntervalId);
   };
-  
-  
+
   // UseEffect para detener el intervalo cuando el componente se desmonta
   useEffect(() => {
     return () => {
@@ -165,7 +156,6 @@ const Layout = ({ children }) => {
     };
   }, [intervalId]);
   // ------------------------------------------------------------------------------ //
-
   // FUNCION PARA EL SPAWNENEMY
   const spawnNewEnemy = () => {
     const randomImages = enemyImages[Math.floor(Math.random() * enemyImages.length)];
@@ -180,18 +170,13 @@ const Layout = ({ children }) => {
         prevEnemyInstance.defensa,
         prevEnemyInstance.exp
       );
-     
-      
+  
       return updatedEnemyInstance;
 
     });
-
     setEnemyImage(randomImages)
-    //   // Cambiar el color de fondo aleatoriamente
-    // let enemy = document.querySelector(".enemy");
-    // enemy.style.backgroundColor = RANDOMCOLOR();
-  };  
 
+  };  
   // ------------------------------------------------------------------------------ //\
   useEffect(() => {
     // Cargar la imagen de manera asíncrona
@@ -208,23 +193,16 @@ const Layout = ({ children }) => {
 
     loadImage();
 }, []);
-
-  
   // HELPER DE DAMAGE
   const onRecruitDamage = (newExp) => {
     const newAttack = characterInstance.incrementAttack(characterInstance);
-
     setExpData(newExp);
-
     const updatedCharacterInstance = new Character(
         UserData.Character.Nombre, 
         newAttack
       );
-
     setCharacterInstance(updatedCharacterInstance);
-
   };
-
     // HELPER DE DAMAGE EXP
     const onRecruitExp = (newExp) => {
       const neweEnemyExp = enemyInstance.incrementExp(enemyInstance);
@@ -238,11 +216,8 @@ const Layout = ({ children }) => {
           enemyInstance.defensa,
           neweEnemyExp
         );
-  
       setEnemyInstance(updatedEnemyInstance);
-  
     };
-
     // HELPER DE DAMAGE SEC
       const onRecruitDamageSec = (newExp, damagesec) => {
       const damagesecVal = damagesec
@@ -257,26 +232,24 @@ const Layout = ({ children }) => {
     setBackgroundImageIndex((backgroundImageIndex + 1) % backgroundImages.length);
   };
 
-
   // FUNCION PARA EL PUNTAJE
   const score = () => {
     // Sumamos el puntaje
-    setExpData(expData+enemyInstance.exp);
+    setExpData(prevExpData => prevExpData + enemyInstance.exp);
     setTempCount(tempCount + 1);
-    setEnemiesDefeated(enemiesDefeated + 1);
-    if ((enemiesDefeated + 1) % 10 === 0) {
-      changeBackground(); // Cambia el fondo cuando se derrotan 10 enemigos
-    }
+    setEnemiesDefeated(prevEnemiesDefeated => {
+      const updatedEnemiesDefeated = prevEnemiesDefeated + 1;
+      if (updatedEnemiesDefeated % 10 === 0) {
+        changeBackground();
+      }
   
-    
+      return updatedEnemiesDefeated;
+    });
   }
   const [showImage, setShowImage] = useState(false); // Estado para controlar la visibilidad de la imagen
-  
-
     const handleStart = () => {
         setShowImage(true); // Mostrar la imagen cuando se hace clic en el botón "Comenzar"
     };
-
 
   return (
     <div className='container'>
@@ -359,8 +332,6 @@ const Layout = ({ children }) => {
         </div>
       </div> 
     </div>
-    
-
   );
 };
 
