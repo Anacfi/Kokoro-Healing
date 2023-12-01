@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.bebbc7cd.css",
-    "main.js": "./static/js/main.caaa5da8.js",
+    "main.js": "./static/js/main.7a3c21c5.js",
     "static/js/787.8b3fa7a3.chunk.js": "./static/js/787.8b3fa7a3.chunk.js",
     "static/media/BackgroundMusic.mp3": "./static/media/BackgroundMusic.c828ff5fd3a05e2305ba.mp3",
     "static/media/nightcamping.gif": "./static/media/nightcamping.68d20775f0ca0681891c.gif",
@@ -41,11 +41,11 @@
     "static/media/MonsterFriendFore.otf": "./static/media/MonsterFriendFore.47b0bd25cc19235e6e75.otf",
     "index.html": "./index.html",
     "main.bebbc7cd.css.map": "./static/css/main.bebbc7cd.css.map",
-    "main.caaa5da8.js.map": "./static/js/main.caaa5da8.js.map",
+    "main.7a3c21c5.js.map": "./static/js/main.7a3c21c5.js.map",
     "787.8b3fa7a3.chunk.js.map": "./static/js/787.8b3fa7a3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.bebbc7cd.css",
-    "static/js/main.caaa5da8.js"
+    "static/js/main.7a3c21c5.js"
   ]
 }
