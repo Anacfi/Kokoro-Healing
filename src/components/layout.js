@@ -280,7 +280,7 @@ const Layout = ({ children }) => {
               {children}
             </div>
             <div className="scoreboard">
-              <span id="enemiesDefeated" className=''> Enemigos derrotados: {enemiesDefeated}</span>
+              <span id="enemiesDefeated" className=''> Desafios Superados: {enemiesDefeated}</span>
             </div>
 
             <RecruitComponent onRecruitExp={onRecruitExp} onRecruitDamage={onRecruitDamage} onRecruitDamageSec={onRecruitDamageSec} expData={expData}/>
